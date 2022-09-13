@@ -1,0 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;700&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    outline: none;
+    border: none;
+    font-family: 'Barlow', sans-serif;
+}
+
+html {
+    --cor-primaria: #00ff73;
+    --fundo-primario: #000000;
+    --fundo-secundario: #151515;
+    --fundo-input: #ffffff;
+    --texto-primario: #ffffff;
+    --tamanho-subtitulo: 20px;
+    --tamanho-texto: 14px;
+    --raio-borda: 6px;
+}
+
+body {
+    background-color: var(--fundo-primario);
+    color: var(--texto-primario);
+    user-select: var(--cor-primaria);
+}
+
+.input-default {
+    border-radius: var(--raio-borda);
+    background-color: var(--fundo-input);
+    color: var(--fundo-primario);
+    padding: 10px 15px;
+}
+
+.botao-default {
+    cursor: pointer;
+    border-radius: var(--raio-borda);
+    background-color: var(--cor-primaria);
+    color: var(--fundo-primario);
+    font-weight: 700;
+    font-size: var(--tamanho-texto);
+    padding: 10px 15px;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.botao-secundario {
+    cursor: pointer;
+    border: 1px solid var(--texto-primario);
+    border-radius: var(--raio-borda);
+    background-color: transparent;
+    color: var(--texto-primario);
+    font-weight: 700;
+    font-size: var(--tamanho-texto);
+    padding: 10px 15px;
+    text-align: center;
+    text-transform: uppercase;
+}
