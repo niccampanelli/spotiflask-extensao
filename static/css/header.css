@@ -1,0 +1,43 @@
+.header-container {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 40px;
+}
+
+.header-botoes {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+.header-conta-botao {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    background-color: transparent;
+    border: 1px solid var(--texto-primario);
+    border-radius: 100px;
+    padding: 5px 15px;
+}
+
+.header-conta-nome {
+    font-size: var(--tamanho-texto);
+    color: var(--texto-primario);
+    text-decoration: none;
+}
+
+.header-conta-botao svg {
+    stroke-width: 3px;
+    color: var(--texto-primario);
+    width: var(--tamanho-subtitulo);
+    height: var(--tamanho-subtitulo);
+}

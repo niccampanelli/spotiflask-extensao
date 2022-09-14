@@ -1,0 +1,24 @@
+main {
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+}
+
+.inicio-container {
+    position: relative;
+    height: 100vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+}
+
+.inicio-conteudo {
+    position: absolute;
+    background-image: linear-gradient(0deg, var(--fundo-secundario) 50%, #ff0000 150%);
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    padding: 100px 40px 40px 40px;
+}

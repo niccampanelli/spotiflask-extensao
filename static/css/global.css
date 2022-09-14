@@ -34,6 +34,11 @@ body {
 }
 
 .botao-default {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
     cursor: pointer;
     border-radius: var(--raio-borda);
     background-color: var(--cor-primaria);
@@ -43,9 +48,15 @@ body {
     padding: 10px 15px;
     text-align: center;
     text-transform: uppercase;
+    text-decoration: none;
 }
 
 .botao-secundario {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
     cursor: pointer;
     border: 1px solid var(--texto-primario);
     border-radius: var(--raio-borda);
@@ -56,4 +67,5 @@ body {
     padding: 10px 15px;
     text-align: center;
     text-transform: uppercase;
+    text-decoration: none;
 }
