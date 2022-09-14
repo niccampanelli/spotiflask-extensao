@@ -1,16 +1,17 @@
 from enum import unique
 from sqlalchemy import create_engine, Column, ForeignKey, String, Integer, Table
 from sqlalchemy.orm import declarative_base, relationship, sessionmaker
+from contextlib import contextmanager
 
-STRING_CONEXAO = 'sqlite://spotiflask.db'
+STRING_CONEXAO = 'sqlite:///spotiflask-extensao/spotiflask.db'
 
 Base = declarative_base()
 
 usuario_musicas = Table(
     "usuario_musicas",
     Base.metadata,
-    Column(Integer, ForeignKey("usuario.id"), primary_key = True),
-    Column(Integer, ForeignKey("musica.id"), primary_key = True)
+    Column("usuario_id", Integer, ForeignKey("usuario.id"), primary_key = True),
+    Column("musica_id", Integer, ForeignKey("musica.id"), primary_key = True)
 )
 
 class Usuario(Base):
@@ -30,8 +31,8 @@ class Usuario(Base):
 biblioteca_playlists = Table(
     "biblioteca_playlists",
     Base.metadata,
-    Column(Integer, ForeignKey("biblioteca.id"), primary_key = True),
-    Column(Integer, ForeignKey("playlist.id"), primary_key = True)
+    Column("biblioteca_id", Integer, ForeignKey("biblioteca.id"), primary_key = True),
+    Column("playlist_id", Integer, ForeignKey("playlist.id"), primary_key = True)
 )
 
 class Biblioteca(Base):
@@ -45,8 +46,8 @@ class Biblioteca(Base):
 playlist_musicas = Table(
     "playlist_musicas",
     Base.metadata,
-    Column(Integer, ForeignKey("playlist.id")),
-    Column(Integer, ForeignKey("musica.id"))
+    Column("playlist_id", Integer, ForeignKey("playlist.id")),
+    Column("musica_id", Integer, ForeignKey("musica.id"))
 )
 
 class Playlist(Base):
@@ -65,25 +66,26 @@ class Musica(Base):
     id = Column(Integer, primary_key = True)
     nome = Column(String(128))
     artistas = relationship("Usuario", secondary=usuario_musicas, back_populates="musicas")
-    duracao = Integer(Integer)
+    duracao = Integer()
     genero_id = Column(Integer, ForeignKey("genero.id"))
     genero = relationship("Genero")
 
     def __repr__(self):
         return '<Musica %r>' % self.nome
 
-class Genero():
+class Genero(Base):
     __tablename__ = "genero"
 
-    id = Column(Integer, primary_key = True)
+    id = Column(Integer, primary_key=True)
     nome = Column(String(100))
 
     def __repr__(self):
         return '<Genero %r>' % self.nome
 
-engine = create_engine(STRING_CONEXAO)
+engine = create_engine(STRING_CONEXAO, echo=True)
 Base.metadata.create_all(engine)
 
+@contextmanager
 def obter_conexao():
     conn = sessionmaker(engine)()
     conn.expire_on_commit = False
