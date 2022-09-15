@@ -10,7 +10,7 @@
 <main>
     <div class="login-card">
         <h2 class="login-titulo">Cadastre-se grátis e comece a curtir!</h2>
-        <form class="login-form" action="/realizar-cadastro" method="POST">
+        <form class="login-form" action="/auth/cadastro" method="POST">
             <label for="nome">Como devemos chamar você?</label>
             <input class="input-default" type="text" name="nome" placeholder="Nos diga seu nome" id="nome" />
 
@@ -26,7 +26,7 @@
             <button class="botao-default" type="submit">Entrar</button>
         </form>
         <h3>Já tem uma conta?</h3>
-        <a href="/login" class="botao-secundario">Faça login</a>
+        <a href="/auth/login" class="botao-secundario">Faça login</a>
     </div>
 </main>
 {% endblock body %}

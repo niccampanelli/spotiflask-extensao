@@ -10,7 +10,7 @@
 <main>
     <div class="login-card">
         <h2 class="login-titulo">Para continuar, faça login</h2>
-        <form action="/" class="login-form">
+        <form action="/auth/login" action="post" class="login-form">
             <label for="email">Endereço de e-mail</label>
             <input class="input-default" type="email" name="email" placeholder="Insira seu e-mail" id="email">
             <label for="senha">Senha</label>
@@ -18,7 +18,7 @@
             <button class="botao-default" type="submit">Entrar</button>
         </form>
         <h3>Não tem uma conta?</h3>
-        <a href="/cadastro" class="botao-secundario">Cadastre-se agora!</a>
+        <a href="/auth/cadastro" class="botao-secundario">Cadastre-se agora!</a>
     </div>
 </main>
 {% endblock body %}
