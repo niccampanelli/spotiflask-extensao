@@ -1,3 +1,4 @@
+import string
 import bcrypt
 from ..models.usuario import Usuario
 from ..extensions import db
@@ -5,10 +6,10 @@ from ..extensions import db
 def criptografar_senha(senha):
     return bcrypt.hashpw(senha.encode('utf-8'), bcrypt.gensalt())
 
-def realizar_login(email, senha):
+def realizar_login(email, senha: string):
     u: Usuario = Usuario.query.filter_by(email=email).first()
     if u:
-        if bcrypt.checkpw(senha.encode('utf-8'), u.senha.encode('utf-8')):
+        if bcrypt.checkpw(senha.encode('utf-8'), u.senha):
             return u.id
         else:
             return -1

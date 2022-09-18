@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block estilospagina %}
+    <link rel="stylesheet" href="/static/css/principal/componentes/adicionar_musica.css">
+    <link rel="stylesheet" href="/static/css/principal/principal.css">
+    <link rel="stylesheet" href="/static/css/principal/navbar.css">
+    <link rel="stylesheet" href="/static/css/principal/header.css">
+{% endblock estilospagina %}
+
+{% block titulo_pagina %}
+{% endblock titulo_pagina %}
+
+{% block principal %}
+    <div class="principal">
+        {% block navbar scoped %}
+            {% include "principal/navbar.html" %}
+        {% endblock navbar %}
+        <main>
+            {% block header scoped %}
+                {% include "principal/header.html" %}
+            {% endblock header %}
+            {% block conteudo scoped %}
+            {% endblock conteudo %}
+            {% include "principal/componentes/adicionar_musica.html" %}
+        </main>
+    </div>
+{% endblock principal %}
+
+{% block scripts_pagina %}
+    {% block scripts_principal scoped %}
+    {% endblock scripts_principal %}
+{% endblock scripts_pagina %}

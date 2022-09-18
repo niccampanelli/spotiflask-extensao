@@ -1,0 +1,32 @@
+{% extends "principal/principal.html" %}
+
+{% block estilospagina %}
+    {{ super() }}
+    <link rel="stylesheet" href="/static/css/principal/usuario.css">
+{% endblock estilospagina %}
+
+{% block titulo_pagina %}Depeche - Spotiflask{% endblock titulo_pagina %}
+
+{% block conteudo %}
+<section class="usuario-conteudo">
+    <section class="usuario-principal">
+        <i data-feather="user"></i>
+        <div class="usuario-infos">
+            {% if u.tipo == 0 %}
+                <p>Usuário</p>
+            {% else %}
+                <p>Artista</p>
+            {% endif %}
+            <h2 class="usuario-infos-nome">{{u.nome}}</h2>
+            <p>{{u.email}}</p>
+        </div>
+    </section>
+    <section>
+        <h2>Biblioteca</h2>
+        <h3>Playlists</h3>
+    </section>
+</section>
+{% endblock conteudo %}
+
+{% block scripts_pagina %}
+{% endblock scripts_pagina %}

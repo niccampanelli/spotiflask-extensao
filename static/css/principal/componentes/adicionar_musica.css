@@ -1,0 +1,63 @@
+.adicionar-backdrop {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 1;
+    background-color: #00000080;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.adicionar-card {
+    background-color: var(--fundo-secundario);
+    width: 400px;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    border-radius: var(--raio-borda);
+}
+
+.adicionar-head {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.adicionar-titulo {
+    font-size: 30px;
+    color: var(--texto-primario);
+}
+
+.adicionar-fechar {
+    cursor: pointer;
+    width: var(--tamanho-subtitulo);
+    height: var(--tamanho-subtitulo);
+}
+
+.adicionar-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.adicionar-campo {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.adicionar-campo:first-child {
+    grid-column: span 2;
+}
+
+.adicionar-form button {
+    margin-top: 20px;
+    grid-column: span 2;
+}

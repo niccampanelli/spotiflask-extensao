@@ -15,9 +15,9 @@ def login():
                 session['logado'] = True
                 session['logado_id'] = logado
                 return redirect('/')
-            return render_template('login.html'), 400
-        return render_template('login.html'), 200
-    return redirect('/')
+            return render_template('auth/login.html'), 400
+        return render_template('auth/login.html'), 200
+    return render_template('auth/login.html'), 200
 
 @auth_bp.route('/cadastro', methods=['POST', 'GET'])
 def cadastro():
@@ -33,6 +33,12 @@ def cadastro():
                 session['logado'] = True
                 session['logado_id'] = id
                 return redirect('/')
-            return render_template('cadastro.html'), 400
-        return render_template('cadastro.html'), 200
+            return render_template('auth/cadastro.html'), 400
+        return render_template('auth/cadastro.html'), 200
+    return render_template('auth/cadastro.html'), 200
+
+@auth_bp.route('/sair', methods=['GET'])
+def sair():
+    session['logado'] = False
+    session.pop('logado_id')
     return redirect('/')

@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block estilospagina %}
+    <link rel="stylesheet" href="/static/css/auth/auth.css">
+{% endblock estilospagina %}
+
+{% block titulo_pagina %}
+{% endblock titulo_pagina %}
+
+{% block principal %}
+    <header>
+        <h1>Spotiflask</h1>
+    </header>
+    {% block conteudo scoped %}
+    {% endblock conteudo %}
+{% endblock principal %}
+
+{% block scripts_pagina %}
+    {% block scripts_principal scoped %}
+    {% endblock scripts_principal %}
+{% endblock scripts_pagina %}

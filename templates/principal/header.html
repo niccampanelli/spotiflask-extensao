@@ -1,0 +1,23 @@
+{% block header %}
+<header class="header-container">
+    <h1>Início</h1>
+    <div class="header-botoes">
+        {% if session['logado'] %}
+            <button id="conta-dropdown" class="header-conta-botao">
+                <p class="header-conta-nome">Depech</p>
+                <i data-feather="chevron-down"></i>
+            </button>
+            <ul class="header-conta-lista" id="conta-dropdown-lista">
+                <li><a href="/usuario/{{ session['logado_id'] }}">Conta</a></li>
+                <li><a href="/auth/sair">Sair</a></li>
+            </ul>
+        {% else %}
+            <a href="/auth/login" id="conta-dropdown" class="header-conta-botao">
+                <p class="header-conta-nome">Entrar</p>
+                <i data-feather="chevron-right"></i>
+            </a>
+        {% endif %}
+    </div>
+    <script src="/static/js/contaDropdown.js" defer></script>
+</header>
+{% endblock header %}

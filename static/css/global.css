@@ -12,8 +12,8 @@
 html {
     --cor-primaria: #00ff73;
     --fundo-primario: #000000;
-    --fundo-secundario: #151515;
-    --fundo-input: #ffffff;
+    --fundo-secundario: #181818;
+    --fundo-input: #333333;
     --texto-primario: #ffffff;
     --tamanho-subtitulo: 20px;
     --tamanho-texto: 14px;
@@ -26,10 +26,14 @@ body {
     user-select: var(--cor-primaria);
 }
 
+.feather {
+    stroke-width: 3px;
+}
+
 .input-default {
     border-radius: var(--raio-borda);
     background-color: var(--fundo-input);
-    color: var(--fundo-primario);
+    color: var(--texto-primario);
     padding: 10px 15px;
 }
 
@@ -68,4 +72,17 @@ body {
     text-align: center;
     text-transform: uppercase;
     text-decoration: none;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--fundo-secundario);
+    margin-left: -10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #555555;
 }

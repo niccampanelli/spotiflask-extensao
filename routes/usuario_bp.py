@@ -16,4 +16,4 @@ def usuario():
 @usuario_bp.route('/<id>', methods=['GET'])
 def dados_usuario(id: int):
     u: Usuario = Usuario.query.get_or_404(id)
-    return render_template('/usuario.html', u=u), 200
+    return render_template('principal/usuario.html', u=u), 200

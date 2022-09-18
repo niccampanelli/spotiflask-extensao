@@ -5,14 +5,24 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/static/css/global.css">
-    {% block head %}
-    
-    {% endblock head %}
+    {% set titulo_pagina %}
+        {% block titulo_pagina %}Spotiflask{% endblock titulo_pagina %}
+    {% endset %}
+    {% set estilospagina %}
+        {% block estilospagina %}{% endblock estilospagina %}
+    {% endset %}
+    {{ estilospagina }}
+    <title>{{ titulo_pagina }}</title>
 </head>
 <body>
-    {% block body %}
+    {% block principal %}
     
-    {% endblock body %}
+    {% endblock principal %}
+
+    {% set scripts_pagina %}
+        {% block scripts_pagina %}{% endblock scripts_pagina %}
+    {% endset %}
+    {{ scripts_pagina }}
     <script src="https://unpkg.com/feather-icons"></script>
     <script>
         feather.replace()

@@ -1,0 +1,12 @@
+.inicio-conteudo {
+    position: absolute;
+    min-width: 100%;
+    width: 100%;
+    min-height: 100%;
+    height: fit-content;
+    background-image: linear-gradient(0deg, var(--fundo-secundario) 50%, #ff0000 150%);
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    padding: 100px 40px 40px 40px;
+}

@@ -12,12 +12,14 @@
 }
 
 .header-botoes {
+    position: relative;
     display: flex;
     flex-direction: row;
     gap: 20px;
 }
 
 .header-conta-botao {
+    cursor: pointer;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -30,14 +32,42 @@
 }
 
 .header-conta-nome {
+    pointer-events: none;
     font-size: var(--tamanho-texto);
     color: var(--texto-primario);
     text-decoration: none;
 }
 
 .header-conta-botao svg {
+    pointer-events: none;
     stroke-width: 3px;
     color: var(--texto-primario);
     width: var(--tamanho-subtitulo);
     height: var(--tamanho-subtitulo);
+}
+
+.header-conta-lista {
+    position: absolute;
+    top: calc(100% + 10px);
+    right: 0;
+    width: 100%;
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    list-style: none;
+    gap: 10px;
+    background-color: var(--fundo-secundario);
+    border-radius: 10px;
+    padding: 10px 20px;
+}
+
+.header-conta-lista li a{
+    font-size: var(--tamanho-texto);
+    color: var(--texto-primario);
+    text-decoration: none;
+}
+
+.header-conta-lista.show{
+    display: flex;
 }

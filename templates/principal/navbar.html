@@ -1,0 +1,18 @@
+{% block navbar %}
+<nav class="navbar-container">
+    <h1 class="navbar-titulo">Spotiflask</h1>
+    <ul class="navbar-lista">
+        <li><i data-feather="home"></i><a href="/">Início</a></li>
+        <li><i data-feather="search"></i><a href="/">Buscar</a></li>
+        {% if session['logado'] %}
+            <li><i data-feather="layers"></i><a href="/">Biblioteca</a></li>
+        {% endif %}
+    </ul>
+    {% if session['logado'] %}
+        <a class="botao-default">
+            Adicionar música
+            <i data-feather="plus"></i>
+        </a>
+    {% endif %}
+</nav>
+{% endblock navbar %}

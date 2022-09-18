@@ -1,16 +1,17 @@
-{% extends "base.html" %}
-{% block head %}
-    <title>Fazer login no Spotiflask</title>
-    <link rel="stylesheet" href="/static/css/login.css">
-{% endblock head %}
-{% block body %}
-<header>
-    <h1>Spotiflask</h1>
-</header>
+{% extends "auth/auth.html" %}
+
+{% block estilospagina %}
+    {{ super() }}
+    <link rel="stylesheet" href="/static/css/auth/login.css">
+{% endblock estilospagina %}
+
+{% block titulo_pagina %}Fazer login no Spotiflask{% endblock titulo_pagina %}
+
+{% block conteudo %}
 <main>
     <div class="login-card">
         <h2 class="login-titulo">Para continuar, faça login</h2>
-        <form action="/auth/login" action="post" class="login-form">
+        <form action="/auth/login" method="post" class="login-form">
             <label for="email">Endereço de e-mail</label>
             <input class="input-default" type="email" name="email" placeholder="Insira seu e-mail" id="email">
             <label for="senha">Senha</label>
@@ -21,4 +22,7 @@
         <a href="/auth/cadastro" class="botao-secundario">Cadastre-se agora!</a>
     </div>
 </main>
-{% endblock body %}
+{% endblock conteudo %}
+
+{% block scripts_pagina %}
+{% endblock scripts_pagina %}
