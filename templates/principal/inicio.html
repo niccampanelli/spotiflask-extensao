@@ -94,6 +94,12 @@
         Laborum aliqua eiusmod sunt occaecat. Non pariatur nulla labore proident exercitation. Est pariatur eiusmod ipsum dolore nisi mollit fugiat nostrud occaecat tempor.
     </p>
 </section>
+{% block adicionar_musica_modal scoped %}
+    {% if adicionar_musica %}
+        {% include "principal/componentes/adicionar_musica.html" %}
+    {% endif %}
+{% endblock adicionar_musica_modal %}
+
 {% endblock conteudo %}
 
 {% block scripts_pagina %}

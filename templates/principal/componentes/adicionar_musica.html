@@ -4,61 +4,46 @@
             <h3 class="adicionar-titulo">Adicionar música</h3>
             <i data-feather="x" class="adicionar-fechar"></i>
         </div>
-        <form class="adicionar-form">
+        <p class="adicionar-observacao">Escolha as informações de música disponíveis e caso não existam, indique nos campos para cadastrar novas informações.</p>
+        <form action="/musica" method="post" class="adicionar-form">
             <div class="adicionar-campo">
                 <label for="nome">Nome da música</label>
                 <input class="input-default" type="text" name="nome" placeholder="Insira o nome da música" id="nome" />
             </div>
             <div class="adicionar-campo">
                 <label for="artista">Artista</label>
-                <input class="input-default" list="artistas" name="artista" placeholder="Escolha o artista" id="artista">
-                <datalist id="artistas">
-                    <option value="Arctic Monkeys">
-                    <option value="Depeche Mode">
-                    <option value="Muse">
-                    <option value="Kings of Leon">
-                    <option value="Queen">
-                    <option value="The Killers">
-                    <option value="Panic At The Disco">
-                    <option value="Talk Talk">
-                    <option value="Duran Duran">
-                    <option value="Oingo Boingo">
-                    <option value="The Police">
-                    <option value="Roxxete">
-                    <option value="The Cranberries">
-                    <option value="Royal Blood">
-                    <option value="Zapp">
-                    <option value="Milli Vanilli">
-                    <option value="Queens Of The Stone Age">
-                </datalist>
+                <select class="input-default" onchange="() => {window.location = '/adicionar_musica/1'; return null}" name="artista" id="artista">
+                    {% for artista in lista_artistas %}
+                        <option value="{{ artista.id }}">{{ artista.nome }}</option>
+                    {% endfor %}
+                </select>
             </div>
             <div class="adicionar-campo">
                 <label for="album">Álbum</label>
                 <input class="input-default" list="albums" name="album" placeholder="Selecione um álbum" id="album">
                 <datalist id="albums">
-                    <option value="Whatever People Say That I Am That's What I Am Not">
-                    <option value="Will Of The People">
-                    <option value="WALLS">
-                    <option value="Tranquility Base Hotel & Casino">
-                    <option value="AM">
-                    <option value="Hot Fuss">
-                    <option value="...Like Clockwork">
-                    <option value="Use Your Illusion I">
-                    <option value="Use Your Illusion II">
-                    <option value="Chinese Democracy">
-                    <option value="Lullaby">
-                    <option value="The 2nd Law">
-                    <option value="Spaghetti Incident">
-                    <option value="Days Of Thunder">
-                    <option value="Forevermore">
-                    <option value="Drones">
+                    {% for album in lista_albuns %}
+                        <option value="{{ album.id }}">{{ album.nome }}</option>
+                    {% endfor %}
+                </datalist>
+            </div>
+            <div class="adicionar-campo">
+                <label for="genero">Gênero</label>
+                <input class="input-default" list="generos" name="genero" placeholder="Selecione um álbum" id="genero">
+                <datalist id="generos">
+                    {% for genero in lista_generos %}
+                        <option value="{{ genero.id }}">{{ genero.nome }}</option>
+                    {% endfor %}
                 </datalist>
             </div>
             <div class="adicionar-campo">
                 <label for="duracao">Duração</label>
-                <input class="input-default" type="text" maxlength="8" minlength="8" placeholder="00:00:00" name="duracao" id="duracao" />
+                <input class="input-escondido" type="hidden" min="0" max="359999" name="duracao" id="duracaoEmSegundos" />
+                <input class="html-duration-picker input-default" type="text" minlength="8" maxlength="8" placeholder="00:00:00" id="duracao" />
             </div>
             <button class="botao-default" type="submit">Adicionar</button>
         </form>
     </aside>
+    <script src="/static/js/converterDuracao.js"></script>
+    <script src="/static/js/html-duration-input.min.js"></script>
 </div>

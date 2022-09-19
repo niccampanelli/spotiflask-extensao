@@ -7,7 +7,7 @@ class Musica(db.Model):
     id = db.Column(db.Integer, primary_key = True)
     nome = db.Column(db.String(128))
     artistas = db.relationship("Usuario", secondary=relations.usuario_musicas, back_populates="musicas")
-    duracao = db.Integer()
+    duracao = db.Column(db.Integer)
     genero_id = db.Column(db.Integer, db.ForeignKey("genero.id"))
     genero = db.relationship("Genero")
 

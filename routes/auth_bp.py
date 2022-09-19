@@ -1,6 +1,5 @@
 from flask import Blueprint, request, render_template, redirect, session
 from ..services.auth_service import realizar_login, realizar_cadastro
-from ..models.usuario import Usuario
 
 auth_bp = Blueprint('auth_bp', __name__, url_prefix='/auth')
 
@@ -17,7 +16,7 @@ def login():
                 return redirect('/')
             return render_template('auth/login.html'), 400
         return render_template('auth/login.html'), 200
-    return render_template('auth/login.html'), 200
+    return redirect('/')
 
 @auth_bp.route('/cadastro', methods=['POST', 'GET'])
 def cadastro():
@@ -35,7 +34,7 @@ def cadastro():
                 return redirect('/')
             return render_template('auth/cadastro.html'), 400
         return render_template('auth/cadastro.html'), 200
-    return render_template('auth/cadastro.html'), 200
+    return redirect('/')
 
 @auth_bp.route('/sair', methods=['GET'])
 def sair():

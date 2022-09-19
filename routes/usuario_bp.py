@@ -9,11 +9,12 @@ from ..models.usuario import Usuario
 
 usuario_bp = Blueprint('usuario_bp', __name__, url_prefix='/usuario')
 
-@usuario_bp.route('/', methods=['POST'])
+@usuario_bp.route('/cria', methods=['GET'])
 def usuario():
+    db.create_all()
     return "testeee"
 
-@usuario_bp.route('/<id>', methods=['GET'])
-def dados_usuario(id: int):
-    u: Usuario = Usuario.query.get_or_404(id)
-    return render_template('principal/usuario.html', u=u), 200
+# @usuario_bp.route('/<id>', methods=['GET'])
+# def dados_usuario(id: int):
+#     u: Usuario = Usuario.query.get_or_404(id)
+#     return render_template('principal/usuario.html', u=u), 200

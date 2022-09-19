@@ -15,8 +15,10 @@ html {
     --fundo-secundario: #181818;
     --fundo-input: #333333;
     --texto-primario: #ffffff;
+    --texto-secundario: #aaaaaa;
     --tamanho-subtitulo: 20px;
     --tamanho-texto: 14px;
+    --tamanho-observacao: 12px;
     --raio-borda: 6px;
 }
 
@@ -31,6 +33,7 @@ body {
 }
 
 .input-default {
+    max-width: 100%;
     border-radius: var(--raio-borda);
     background-color: var(--fundo-input);
     color: var(--texto-primario);

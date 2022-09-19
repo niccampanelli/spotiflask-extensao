@@ -41,9 +41,16 @@
     height: var(--tamanho-subtitulo);
 }
 
+.adicionar-observacao {
+    font-size: var(--tamanho-observacao);
+    color: var(--texto-secundario);
+    margin-bottom: 20px;
+}
+
 .adicionar-form {
+    width: 100%;
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     gap: 10px;
 }
 
@@ -57,7 +64,11 @@
     grid-column: span 2;
 }
 
-.adicionar-form button {
+.adicionar-form .botao-default {
     margin-top: 20px;
     grid-column: span 2;
+}
+
+.html-duration-picker-input-controls-wrapper .controls button {
+    display: none;
 }
