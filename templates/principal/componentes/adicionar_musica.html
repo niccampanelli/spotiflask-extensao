@@ -1,8 +1,8 @@
-<div class="adicionar-backdrop">
+<div id="adicionar-musica-modal" class="adicionar-backdrop">
     <aside class="adicionar-card">
         <div class="adicionar-head">
             <h3 class="adicionar-titulo">Adicionar música</h3>
-            <i data-feather="x" class="adicionar-fechar"></i>
+            <a href="/" class="adicionar-fechar"><i data-feather="x"></i></a>
         </div>
         <p class="adicionar-observacao">Escolha as informações de música disponíveis e caso não existam, indique nos campos para cadastrar novas informações.</p>
         <form action="/musica" method="post" class="adicionar-form">
@@ -12,7 +12,8 @@
             </div>
             <div class="adicionar-campo">
                 <label for="artista">Artista</label>
-                <select class="input-default" onchange="() => {window.location = '/adicionar_musica/1'; return null}" name="artista" id="artista">
+                <select class="input-default" name="artista" id="artista">
+                    <option value="">Selecione um artista</option>
                     {% for artista in lista_artistas %}
                         <option value="{{ artista.id }}">{{ artista.nome }}</option>
                     {% endfor %}
@@ -20,8 +21,8 @@
             </div>
             <div class="adicionar-campo">
                 <label for="album">Álbum</label>
-                <input class="input-default" list="albums" name="album" placeholder="Selecione um álbum" id="album">
-                <datalist id="albums">
+                <input class="input-default" list="albuns" name="album" autocomplete="off" placeholder="Selecione um álbum" id="album">
+                <datalist id="albuns">
                     {% for album in lista_albuns %}
                         <option value="{{ album.id }}">{{ album.nome }}</option>
                     {% endfor %}
@@ -29,7 +30,7 @@
             </div>
             <div class="adicionar-campo">
                 <label for="genero">Gênero</label>
-                <input class="input-default" list="generos" name="genero" placeholder="Selecione um álbum" id="genero">
+                <input class="input-default" list="generos" name="genero" autocomplete="off" placeholder="Indique o gênero" id="genero">
                 <datalist id="generos">
                     {% for genero in lista_generos %}
                         <option value="{{ genero.id }}">{{ genero.nome }}</option>
@@ -46,4 +47,5 @@
     </aside>
     <script src="/static/js/converterDuracao.js"></script>
     <script src="/static/js/html-duration-input.min.js"></script>
+    <script src="/static/js/adicionar_musica_modal.js"></script>
 </div>

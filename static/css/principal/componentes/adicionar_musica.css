@@ -39,6 +39,8 @@
     cursor: pointer;
     width: var(--tamanho-subtitulo);
     height: var(--tamanho-subtitulo);
+    color: var(--texto-primario);
+    text-decoration: none;
 }
 
 .adicionar-observacao {

@@ -5,7 +5,6 @@ from .routes.usuario_bp import usuario_bp
 from .routes.musica_bp import musica_bp
 from .routes.auth_bp import auth_bp
 from .services.musica_service import obter_generos
-from .services.playlist_service import obter_albuns
 from .services.usuario_service import obter_artistas
 
 def create_app():
@@ -26,11 +25,10 @@ def create_app():
     def inicio():
         return render_template('principal/inicio.html')
 
-    @app.route('/adicionar_musica/<artista>')
-    def adicionar_musica_artistas(artista):
+    @app.route('/adicionar_musica')
+    def adicionar_musica():
         lista_artistas = obter_artistas()
         lista_generos = obter_generos()
-        lista_albuns = obter_albuns(artista)
-        return render_template('principal/inicio.html', adicionar_musica=True, lista_artistas=lista_artistas, lista_generos=lista_generos, lista_albuns=lista_albuns)
+        return render_template('principal/inicio.html', adicionar_musica=True, lista_artistas=lista_artistas, lista_generos=lista_generos)
 
     return app

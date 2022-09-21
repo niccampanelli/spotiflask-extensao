@@ -1,5 +1,6 @@
 from flask import Blueprint, render_template
 from ..extensions import db
+from ..services.playlist_service import playlists_usuario
 from ..models.biblioteca import Biblioteca
 from ..models.genero import Genero
 from ..models.musica import Musica
@@ -14,7 +15,12 @@ def usuario():
     db.create_all()
     return "testeee"
 
-# @usuario_bp.route('/<id>', methods=['GET'])
-# def dados_usuario(id: int):
-#     u: Usuario = Usuario.query.get_or_404(id)
-#     return render_template('principal/usuario.html', u=u), 200
+@usuario_bp.route('/<id>', methods=['GET'])
+def dados_usuario(id: int):
+    u: Usuario = Usuario.query.get_or_404(id)
+    return render_template('principal/usuario.html', u=u), 200
+
+@usuario_bp.route('/<id>/playlists', methods=['GET'])
+def listar_playlists(id: int):
+    playlists = playlists_usuario(id)
+    return playlists
