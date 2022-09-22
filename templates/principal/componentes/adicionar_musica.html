@@ -8,11 +8,11 @@
         <form action="/musica" method="post" class="adicionar-form">
             <div class="adicionar-campo">
                 <label for="nome">Nome da música</label>
-                <input class="input-default" type="text" name="nome" placeholder="Insira o nome da música" id="nome" />
+                <input class="input-default" type="text" name="nome" autofocus required placeholder="Insira o nome da música" id="nome" />
             </div>
             <div class="adicionar-campo">
                 <label for="artista">Artista</label>
-                <select class="input-default" name="artista" id="artista">
+                <select class="input-default" required name="artista" id="artista">
                     <option value="">Selecione um artista</option>
                     {% for artista in lista_artistas %}
                         <option value="{{ artista.id }}">{{ artista.nome }}</option>
@@ -21,7 +21,7 @@
             </div>
             <div class="adicionar-campo">
                 <label for="album">Álbum</label>
-                <input class="input-default" list="albuns" name="album" autocomplete="off" placeholder="Selecione um álbum" id="album">
+                <input class="input-default" list="albuns" required name="album" autocomplete="off" placeholder="Selecione um álbum" id="album">
                 <datalist id="albuns">
                     {% for album in lista_albuns %}
                         <option value="{{ album.id }}">{{ album.nome }}</option>
@@ -30,7 +30,7 @@
             </div>
             <div class="adicionar-campo">
                 <label for="genero">Gênero</label>
-                <input class="input-default" list="generos" name="genero" autocomplete="off" placeholder="Indique o gênero" id="genero">
+                <input class="input-default" list="generos" required name="genero" autocomplete="off" placeholder="Indique o gênero" id="genero">
                 <datalist id="generos">
                     {% for genero in lista_generos %}
                         <option value="{{ genero.id }}">{{ genero.nome }}</option>
@@ -40,7 +40,7 @@
             <div class="adicionar-campo">
                 <label for="duracao">Duração</label>
                 <input class="input-escondido" type="hidden" min="0" max="359999" name="duracao" id="duracaoEmSegundos" />
-                <input class="html-duration-picker input-default" type="text" minlength="8" maxlength="8" placeholder="00:00:00" id="duracao" />
+                <input class="html-duration-picker input-default" required type="text" minlength="8" maxlength="8" autocomplete="off" contenteditable="off" placeholder="00:00:00" id="duracao" />
             </div>
             <button class="botao-default" type="submit">Adicionar</button>
         </form>

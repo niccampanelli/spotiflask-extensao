@@ -1,10 +1,15 @@
 import string
 import bcrypt
+from ..models.biblioteca import Biblioteca
 from ..models.usuario import Usuario
 from ..models.genero import Genero
 from ..models.musica import Musica
 from ..models.playlist import Playlist
 from ..extensions import db
+
+def obter_musicas():
+    musicas = Musica.query.all()
+    return musicas
 
 def cadastrar_genero(nome):
     g: Genero = Genero.query.filter_by(nome=nome).first()
@@ -22,7 +27,10 @@ def obter_generos():
 
 def adicionar_album(nome, artista):
     album = Playlist(nome=nome, album=1, proprietario_id=artista)
+    biblioteca = Biblioteca.query.filter(Biblioteca.usuario_id == artista).first()
+    biblioteca.playlists.append(album)
     db.session.add(album)
+    db.session.add(biblioteca)
     db.session.commit()
     return album.id
 

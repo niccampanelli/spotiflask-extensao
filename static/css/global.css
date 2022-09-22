@@ -12,7 +12,8 @@
 html {
     --cor-primaria: #00ff73;
     --fundo-primario: #000000;
-    --fundo-secundario: #181818;
+    --fundo-secundario: #0f0f0f;
+    --fundo-terciario: #151515;
     --fundo-input: #333333;
     --texto-primario: #ffffff;
     --texto-secundario: #aaaaaa;
@@ -75,6 +76,27 @@ body {
     text-align: center;
     text-transform: uppercase;
     text-decoration: none;
+}
+
+.card-default {
+    width: 200px;
+    height: 280px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    border-radius: var(--raio-borda);
+    background-color: var(--fundo-terciario);
+    color: var(--texto-primario);
+    padding: 20px;
+    text-decoration: none;
+}
+
+.card-default-icone {
+    width: 100%;
+    height: auto;
+    color: var(--texto-primario);
+    border-radius: var(--raio-borda);
+    padding: 40px;
 }
 
 ::-webkit-scrollbar {

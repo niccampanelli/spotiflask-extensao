@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="/static/css/principal/usuario.css">
 {% endblock estilospagina %}
 
-{% block titulo_pagina %}Depeche - Spotiflask{% endblock titulo_pagina %}
+{% block titulo_pagina %}{{u.nome}} - Spotiflask{% endblock titulo_pagina %}
 
 {% block conteudo %}
 <section class="usuario-conteudo">
@@ -23,7 +23,32 @@
     </section>
     <section>
         <h2>Biblioteca</h2>
+        {% if u.tipo == 1 %}
+            {% if albuns %}
+            <h3>Albuns</h3>
+            <ul class="usuario-playlists">
+            {% for a in albuns %}
+                <li>
+                    <a href="/playlist/{{a.id}}">
+                        <p>{{a.nome}}</p>
+                    </a>
+                </li>
+            {% endfor %}
+            </ul>
+            {% endif %}
+        {% endif %}
+        {% if playlists != 0 %}
         <h3>Playlists</h3>
+        <ul class="usuario-playlists">
+        {% for p in playlists %}
+            <li>
+                <a href="/playlist/{{p.id}}">
+                    <p>{{p.nome}}</p>
+                </a>
+            </li>
+        {% endfor %}
+        </ul>
+        {% endif %}
     </section>
 </section>
 {% endblock conteudo %}

@@ -12,7 +12,8 @@ def login():
             logado = realizar_login(email, senha)
             if not logado == -1:
                 session['logado'] = True
-                session['logado_id'] = logado
+                session['logado_id'] = logado[0]
+                session['logado_nome'] = logado[1]
                 return redirect('/')
             return render_template('auth/login.html'), 400
         return render_template('auth/login.html'), 200
@@ -26,11 +27,12 @@ def cadastro():
             email = request.form['email']
             senha = request.form['senha']
             confirma_senha = request.form['confirma_senha']
-            tipo = 0
+            tipo = 1 if request.form.get('tipo', 0) == 'on' else 0
             if senha == confirma_senha:
-                id = realizar_cadastro(nome, email, senha, tipo)
+                logado = realizar_cadastro(nome, email, senha, tipo)
                 session['logado'] = True
-                session['logado_id'] = id
+                session['logado_id'] = logado[0]
+                session['logado_nome'] = logado[1]
                 return redirect('/')
             return render_template('auth/cadastro.html'), 400
         return render_template('auth/cadastro.html'), 200
@@ -40,4 +42,5 @@ def cadastro():
 def sair():
     session['logado'] = False
     session.pop('logado_id')
+    session.pop('logado_nome')
     return redirect('/')

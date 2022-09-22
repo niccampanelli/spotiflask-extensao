@@ -4,7 +4,7 @@
     <div class="header-botoes">
         {% if session['logado'] %}
             <button id="conta-dropdown" class="header-conta-botao">
-                <p class="header-conta-nome">Depech</p>
+                <p class="header-conta-nome">{{ session['logado_nome'] or 'Conta' }}</p>
                 <i data-feather="chevron-down"></i>
             </button>
             <ul class="header-conta-lista" id="conta-dropdown-lista">

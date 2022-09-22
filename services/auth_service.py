@@ -1,6 +1,7 @@
 import string
 import bcrypt
 from ..models.usuario import Usuario
+from ..models.biblioteca import Biblioteca
 from ..extensions import db
 
 def criptografar_senha(senha):
@@ -10,7 +11,7 @@ def realizar_login(email, senha: string):
     u: Usuario = Usuario.query.filter_by(email=email).first()
     if u:
         if bcrypt.checkpw(senha.encode('utf-8'), u.senha):
-            return u.id
+            return [u.id, u.nome]
         else:
             return -1
     else:
@@ -22,6 +23,10 @@ def realizar_cadastro(nome, email, senha, tipo):
         usuario = Usuario(nome=nome, email=email, senha=criptografar_senha(senha), tipo=tipo)
         db.session.add(usuario)
         db.session.commit()
-        return usuario.id
+        biblioteca = Biblioteca(usuario_id=usuario.id)
+        biblioteca.usuario = usuario
+        db.session.add(biblioteca)
+        db.session.commit()
+        return [usuario.id, usuario.nome]
     else:
         return -1

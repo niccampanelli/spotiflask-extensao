@@ -1,0 +1,48 @@
+{% extends "principal/principal.html" %}
+
+{% block estilospagina %}
+    {{ super() }}
+    <link rel="stylesheet" href="/static/css/principal/playlist.css">
+{% endblock estilospagina %}
+
+{% block titulo_pagina %}{{p.nome}} - Spotiflask{% endblock titulo_pagina %}
+
+{% block conteudo %}
+<section class="playlist-conteudo">
+    <section class="playlist-principal">
+        <i class="playlist-icone" data-feather="music"></i>
+        <div class="playlist-infos">
+            {% if p.album == 0 %}
+                <p>Playlist</p>
+            {% else %}
+                <p>Álbum</p>
+            {% endif %}
+            <h2 class="playlist-infos-nome">{{p.nome}}</h2>
+            <p><i data-feather="user"></i> {{p.proprietario.nome}} | {{p.musicas|length}} músicas</p>
+        </div>
+    </section>
+    <section>
+        <table class="playlist-lista">
+            <thead class="playlist-lista-header">
+                <tr>
+                    <th>#</th>
+                    <th>Título</th>
+                    <th><i data-feather="clock"></i></th>
+                </tr>
+            </thead>
+            <tbody class="playlist-lista-corpo">
+            {% for m in p.musicas %}
+                <tr>
+                    <td>{{loop.index}}</td>
+                    <td>{{m.nome}}</td>
+                    <td>{{m.duracao}}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </section>
+</section>
+{% endblock conteudo %}
+
+{% block scripts_pagina %}
+{% endblock scripts_pagina %}
