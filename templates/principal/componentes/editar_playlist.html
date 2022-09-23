@@ -1,0 +1,21 @@
+<div id="editar-playlist-modal" class="editar-backdrop">
+    <aside class="editar-card">
+        <div class="editar-head">
+            <h3 class="editar-titulo">Editar {{ 'álbum' if p.album == 1 else 'playlist' }}</h3>
+            <a href="/playlist/{{p.id}}" class="editar-fechar"><i data-feather="x"></i></a>
+        </div>
+        <p class="editar-observacao">Insira as novas informações {{ 'do álbum' if p.album == 1 else 'da playlist' }} e clique em salvar para aplicar as mudanças. Os campos não podem ser omitidos.</p>
+        <form action="/playlist/{{p.id}}/editar" autocomplete="off" method="post" class="editar-form">
+            <div class="editar-campo">
+                <label for="cor">Cor {{ 'do álbum' if p.album == 1 else 'da playlist' }}</label>
+                <input class="editar-cor-input" type="color" name="cor" required id="cor" />
+            </div>
+            <div class="editar-campo">
+                <label for="nome">Nome {{ 'do álbum' if p.album == 1 else 'da playlist' }}</label>
+                <input class="input-default" type="text" name="nome" autofocus required value="{{p.nome}}" onfocus="this.select()" placeholder="Insira um novo nome para {{ 'o álbum' if p.album == 1 else 'a playlist' }}" id="nome" />
+            </div>
+            <button class="botao-default" type="submit">Salvar</button>
+        </form>
+    </aside>
+    <script src="/static/js/editar_playlist_modal.js"></script>
+</div>

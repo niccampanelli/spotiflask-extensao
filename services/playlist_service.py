@@ -1,16 +1,19 @@
 import time
+
+from ..services.musica_service import excluir_musica
 from ..models.usuario import Usuario
 from ..models.playlist import Playlist
 from ..extensions import db
 
 def detalhes_playlist(id_playlist):
     playlist = Playlist.query.get(id_playlist)
-    for m in playlist.musicas:
+    resultado = Playlist(id=playlist.id, nome=playlist.nome, album=playlist.album, musicas=playlist.musicas, proprietario_id=playlist.proprietario_id, proprietario=playlist.proprietario, bibliotecas=playlist.bibliotecas)
+    for m in resultado.musicas:
         if m.duracao < 3600:
             m.duracao = time.strftime('%M:%S', time.gmtime(m.duracao))
         else:
             m.duracao = time.strftime('%H:%M:%S', time.gmtime(m.duracao))
-    return playlist
+    return resultado
 
 def obter_playlists(incluir_albuns=False):
     if incluir_albuns:
@@ -23,6 +26,23 @@ def playlists_usuario(id_usuario):
     playlists = Playlist.query.with_entities(Playlist.id, Playlist.nome, Playlist.proprietario_id, Playlist.album).filter(Playlist.proprietario_id == id_usuario, Playlist.album == 0).all()
     resultado = [tuple(p) for p in playlists]
     return resultado
+
+def editar_playlist(id_playlist, nome):
+    playlist: Playlist = Playlist.query.get(id_playlist)
+    playlist.nome = nome
+    db.session.add(playlist)
+    db.session.commit()
+
+def excluir_playlist(id_playlist):
+    playlist: Playlist = Playlist.query.get(id_playlist)
+    if playlist:
+        if(playlist.album == 1):
+            for m in playlist.musicas:
+                excluir_musica(m.id, id_playlist)
+        playlist.musicas.clear()
+        playlist.bibliotecas.clear()
+        db.session.delete(playlist)
+        db.session.commit()
 
 def albuns_artistas(id_artista):
     usuario = Usuario.query.with_entities(Usuario.id, Usuario.tipo).filter(Usuario.id == id_artista).first()

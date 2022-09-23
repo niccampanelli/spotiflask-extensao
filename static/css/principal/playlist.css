@@ -20,7 +20,7 @@ main {
     width: 100%;
     min-height: 100%;
     height: fit-content;
-    background-image: linear-gradient(0deg, var(--fundo-secundario) 0%, #ff0000 150%);
+    background-image: linear-gradient(0deg, var(--fundo-secundario) 60%, #5d8ec5 120%);
     display: flex;
     gap: 20px;
     flex: 1;
@@ -28,23 +28,32 @@ main {
     padding: 100px 40px 40px 40px;
 }
 
+.playlist-acao {
+    text-decoration: none;
+}
+
 .playlist-principal {
     display: flex;
     flex-direction: row;
     align-items: center;
     gap: 20px;
+    color: var(--texto-primario);
+    margin-bottom: 40px;
 }
 
 .playlist-icone {
     border-radius: var(--raio-borda);
-    background-color: #e00d01;
+    background-color: #a5b2c0;
     box-shadow: 0 4px 60px rgb(0 0 0 / 50%);
     padding: 40px;
+    min-width: 200px;
     width: 200px;
+    min-height: 200px;
     height: 200px;
 }
 
 .playlist-infos {
+    width: 100%;
     display: flex;
     flex-direction: column;
 }
@@ -53,6 +62,67 @@ main {
     font-size: 60px;
     color: var(--texto-primario);
     text-decoration: none;
+}
+
+.playlist-infos-artista {
+    font-size: var(--tamanho-texto);
+    color: var(--texto-primario);
+    text-decoration: none;
+}
+
+.playlist-infos-artista svg {
+    width: var(--tamanho-texto);
+    height: var(--tamanho-texto);
+}
+
+.playlist-opcoes {
+    position: relative;
+    align-self: flex-end;
+    width: fit-content;
+    height: fit-content;
+}
+
+.playlist-opcoes-botao {
+    cursor: pointer;
+    width: fit-content;
+    height: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    color: var(--texto-primario);
+}
+
+.playlist-opcoes-botao svg {
+    pointer-events: none;
+    width: 40px;
+    height: 40px;
+}
+
+.playlist-opcoes-lista {
+    position: absolute;
+    top: calc(100% + 10px);
+    right: 0;
+    width: fit-content;
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    list-style: none;
+    gap: 10px;
+    background-color: var(--fundo-terciario);
+    border-radius: 10px;
+    padding: 10px 20px;
+}
+
+.playlist-opcoes-lista li a {
+    font-size: var(--tamanho-texto);
+    color: var(--texto-primario);
+    text-decoration: none;
+}
+
+.playlist-opcoes-lista.show {
+    display: flex;
 }
 
 .playlist-lista {
@@ -64,14 +134,17 @@ main {
 
 .playlist-lista-header {
     text-align: left;
+    border-bottom: 1px solid var(--texto-secundario);
     height: 40px;
 }
 
-.playlist-lista-header tr {
-    border-bottom: 1px solid var(--texto-secundario);
+.playlist-lista-header tr th:first-child {
+    padding-left: 20px;
 }
 
 .playlist-lista-header tr th:last-child {
+    width: 100px;
+    padding-right: 20px;
     text-align: right;
 }
 
@@ -79,6 +152,70 @@ main {
     height: 40px;
 }
 
+.playlist-lista-corpo tr:hover {
+    background-color: #ffffff0f;
+}
+
+.playlist-lista-musica-opcoes {
+    position: relative;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.playlist-lista-musica-opcoes button {
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    color: var(--texto-primario);
+    opacity: 0;
+}
+
+.playlist-lista-musica-opcoes button svg {
+    pointer-events: none;
+    width: 20px;
+    height: 20px;
+}
+
+.playlist-lista-corpo tr:hover > td.playlist-lista-musica-opcoes button {
+    opacity: 1;
+}
+
+.playlist-lista-musica-opcoes-lista {
+    position: absolute;
+    top: calc(100% + 10px);
+    right: 0;
+    z-index: 1;
+    width: fit-content;
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    list-style: none;
+    gap: 10px;
+    background-color: var(--fundo-terciario);
+    border-radius: 10px;
+    padding: 10px 20px;
+}
+
+.playlist-lista-musica-opcoes-lista li a {
+    font-size: var(--tamanho-texto);
+    color: var(--texto-primario);
+    text-decoration: none;
+}
+
+.playlist-lista-musica-opcoes-lista.show {
+    display: flex;
+}
+
+.playlist-lista-corpo tr td:first-child {
+    padding-left: 20px;
+}
+
 .playlist-lista-corpo tr td:last-child {
+    padding-right: 20px;
     text-align: right;
 }

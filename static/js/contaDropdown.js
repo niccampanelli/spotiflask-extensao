@@ -1,12 +1,12 @@
-const dropdown = document.getElementById('conta-dropdown');
-const lista = document.getElementById('conta-dropdown-lista');
+const headerContaDropdown = document.getElementById('conta-dropdown');
+const headerContaDropdownLista = document.getElementById('conta-dropdown-lista');
 
-dropdown.addEventListener('click', () => {
-    lista.classList.toggle('show');
+headerContaDropdown.addEventListener('click', () => {
+    headerContaDropdownLista?.classList.toggle('show');
 }, false);
 
 window.addEventListener('click', (e) => {
     if (e.target.id !== 'conta-dropdown') {
-        lista.classList.remove('show');
+        headerContaDropdownLista?.classList.remove('show');
     }
 });

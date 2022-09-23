@@ -1,0 +1,17 @@
+<div id="excluir-playlist-modal" class="excluir-backdrop">
+    <aside class="excluir-card">
+        <div class="excluir-head">
+            <h3 class="excluir-titulo">Deseja mesmo excluir {{ 'esse álbum' if p.album == 1 else 'essa playlist' }}?</h3>
+            <a href="/playlist/{{p.id}}" class="excluir-fechar"><i data-feather="x"></i></a>
+        </div>
+        <p class="excluir-observacao">{{ 'Ao excluir esse álbum, todas as músicas associadas à ele também serão removidas. Não é possível voltar atrás.' if p.album == 1 else 'Não é possível desfazer esta ação. As músicas ainda permanecerão cadastradas aos seus respectivos álbuns.' }}</p>
+        <form action="/playlist/{{p.id}}/excluir" autocomplete="off" method="post" class="excluir-form">
+            <div class="excluir-campo">
+                <label for="nome">Digite o nome {{ 'do álbum' if p.album == 1 else 'da playlist' }} para confirmar</label>
+                <input class="input-default" type="text" name="nome" autofocus required onfocus="this.select()" placeholder="Nome {{ 'do álbum' if p.album == 1 else 'da playlist' }}" id="nome" />
+            </div>
+            <button class="botao-default" type="submit">Confirmar</button>
+        </form>
+    </aside>
+    <script src="/static/js/excluir_playlist_modal.js"></script>
+</div>

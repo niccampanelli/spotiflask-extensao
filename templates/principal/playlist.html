@@ -3,30 +3,47 @@
 {% block estilospagina %}
     {{ super() }}
     <link rel="stylesheet" href="/static/css/principal/playlist.css">
+    <link rel="stylesheet" href="/static/css/principal/componentes/editar_playlist.css">
+    <link rel="stylesheet" href="/static/css/principal/componentes/excluir_playlist.css">
 {% endblock estilospagina %}
 
 {% block titulo_pagina %}{{p.nome}} - Spotiflask{% endblock titulo_pagina %}
 
 {% block conteudo %}
 <section class="playlist-conteudo">
-    <section class="playlist-principal">
-        <i class="playlist-icone" data-feather="music"></i>
-        <div class="playlist-infos">
-            {% if p.album == 0 %}
-                <p>Playlist</p>
-            {% else %}
-                <p>Álbum</p>
-            {% endif %}
-            <h2 class="playlist-infos-nome">{{p.nome}}</h2>
-            <p><i data-feather="user"></i> {{p.proprietario.nome}} | {{p.musicas|length}} músicas</p>
-        </div>
-    </section>
+        <section class="playlist-principal">
+            <i class="playlist-icone" data-feather="music"></i>
+            <div class="playlist-infos">
+                {% if p.album == 0 %}
+                    <p>Playlist</p>
+                {% else %}
+                    <p>Álbum</p>
+                {% endif %}
+                {% if p.proprietario_id == session['logado_id'] %}
+                    <a class="playlist-acao" href="/playlist/{{p.id}}/editar">
+                        <h2 class="playlist-infos-nome">{{p.nome}}</h2>
+                    </a>
+                {% else %}
+                    <h2 class="playlist-infos-nome">{{p.nome}}</h2>
+                {% endif %}
+                <p><a class="playlist-infos-artista" href="/usuario/{{p.proprietario_id}}"><i data-feather="user"></i> {{p.proprietario.nome}}</a> | {{p.musicas|length}} {{'música' if p.musicas|length == 1 else 'músicas'}}</p>
+            </div>
+            <div class="playlist-opcoes">
+                {% if p.proprietario_id == session['logado_id'] %}
+                    <button class="playlist-opcoes-botao" id="playlist-opcoes"><i data-feather="more-vertical"></i></button>
+                    <ul class="playlist-opcoes-lista" id="playlist-opcoes-lista">
+                        <li><a href="/playlist/{{p.id}}/excluir">Excluir</a></li>
+                    </ul>
+                {% endif %}
+            </div>
+        </section>
     <section>
         <table class="playlist-lista">
             <thead class="playlist-lista-header">
                 <tr>
                     <th>#</th>
                     <th>Título</th>
+                    <th></th>
                     <th><i data-feather="clock"></i></th>
                 </tr>
             </thead>
@@ -35,14 +52,44 @@
                 <tr>
                     <td>{{loop.index}}</td>
                     <td>{{m.nome}}</td>
+                    <td class="playlist-lista-musica-opcoes">
+                        <button id="playlist-lista-musica-opcoes_{{loop.index}}">
+                            <i data-feather="more-vertical"></i>
+                        </button>
+                        <ul class="playlist-lista-musica-opcoes-lista" id="playlist-lista-musica-opcoes-lista_{{loop.index}}">
+                            {% if p.proprietario_id == session['logado_id'] %}
+                                <li><a href="/playlist/{{p.id}}/musica/{{m.id}}/excluir">{{ 'Excluir' if p.album == 1 else 'Remover' }}</a></li>
+                            {% endif %}
+                        </ul>
+                        <script>
+                            document.getElementById('playlist-lista-musica-opcoes_{{loop.index}}').addEventListener('click', () => {
+                                document.getElementById('playlist-lista-musica-opcoes-lista_{{loop.index}}')?.classList.toggle('show');
+                            }, false);
+                            window.addEventListener('click', (e) => {
+                                if (e.target.id !== 'playlist-lista-musica-opcoes_{{loop.index}}') {
+                                    document.getElementById('playlist-lista-musica-opcoes-lista_{{loop.index}}')?.classList.remove('show');
+                                }
+                            });
+                        </script>
+                    </td>
                     <td>{{m.duracao}}</td>
                 </tr>
             {% endfor %}
             </tbody>
         </table>
     </section>
+    {% if editando %}
+        {% include "principal/componentes/editar_playlist.html" %}
+    {% endif %}
+    {% if excluindo %}
+        {% include "principal/componentes/excluir_playlist.html" %}
+    {% endif %}
+    {% if excluindoMusica %}
+        {% include "principal/componentes/excluir_musica.html" %}
+    {% endif %}
 </section>
 {% endblock conteudo %}
 
 {% block scripts_pagina %}
+<script src="/static/js/playlistDropdown.js"></script>
 {% endblock scripts_pagina %}

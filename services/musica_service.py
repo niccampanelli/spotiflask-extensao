@@ -7,6 +7,10 @@ from ..models.musica import Musica
 from ..models.playlist import Playlist
 from ..extensions import db
 
+def detalhes_musica(id):
+    musica = Musica.query.get(id)
+    return musica
+
 def obter_musicas():
     musicas = Musica.query.all()
     return musicas
@@ -19,7 +23,7 @@ def cadastrar_genero(nome):
         db.session.commit()
         return genero.id
     else:
-        return -1
+        return g.id
 
 def obter_generos():
     generos = Genero.query.all()
@@ -47,3 +51,13 @@ def adicionar_musica(nome, duracao, genero_id, artista_id, album_id):
         return musica.id
     else:
         return -1
+
+def excluir_musica(id_musica, id_playlist):
+    musica: Musica = Musica.query.get(id_musica)
+    playlist: Playlist = Playlist.query.get(id_playlist)
+    if musica and playlist:
+        playlist.musicas.remove(musica)
+        for a in musica.artistas:
+            a.musicas.remove(musica)
+        db.session.delete(musica)
+        db.session.commit()

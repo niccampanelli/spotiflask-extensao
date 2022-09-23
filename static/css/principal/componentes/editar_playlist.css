@@ -1,4 +1,4 @@
-.adicionar-backdrop {
+.editar-backdrop {
     position: fixed;
     top: 0;
     right: 0;
@@ -11,7 +11,7 @@
     align-items: center;
 }
 
-.adicionar-card {
+.editar-card {
     background-color: var(--fundo-secundario);
     width: 400px;
     height: fit-content;
@@ -21,7 +21,7 @@
     border-radius: var(--raio-borda);
 }
 
-.adicionar-head {
+.editar-head {
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -30,12 +30,12 @@
     margin-bottom: 20px;
 }
 
-.adicionar-titulo {
+.editar-titulo {
     font-size: 30px;
     color: var(--texto-primario);
 }
 
-.adicionar-fechar {
+.editar-fechar {
     cursor: pointer;
     width: var(--tamanho-subtitulo);
     height: var(--tamanho-subtitulo);
@@ -43,32 +43,35 @@
     text-decoration: none;
 }
 
-.adicionar-observacao {
+.editar-observacao {
     font-size: var(--tamanho-observacao);
     color: var(--texto-secundario);
     margin-bottom: 20px;
 }
 
-.adicionar-form {
+.editar-form {
     width: 100%;
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-    gap: 10px;
-}
-
-.adicionar-campo {
     display: flex;
     flex-direction: column;
     gap: 10px;
 }
 
-.adicionar-campo:first-child {
+.editar-campo {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.editar-form .botao-default {
+    margin-top: 20px;
     grid-column: span 2;
 }
 
-.adicionar-form .botao-default {
-    margin-top: 20px;
-    grid-column: span 2;
+.editar-cor-input {
+    max-width: 100%;
+    width: 100%;
+    background-color: var(--fundo-input);
+    border-radius: var(--raio-borda);
 }
 
 .html-duration-picker-input-controls-wrapper .controls button {

@@ -9,7 +9,7 @@
 
 {% block conteudo %}
 <section class="inicio-conteudo">
-    <h2 class="inicio-saudacao">Olá, {{session['logado_nome']}}!</h2>
+    <h2 class="inicio-saudacao">{{'Olá, '+session['logado_nome']+'!' if session['logado'] else 'Bem-vindo!'}}</h2>
     <h2 class="inicio-topico">Adicionadas recentemente</h2>
     <div class="inicio-playlists">
         <ul class="inicio-playlists-lista">

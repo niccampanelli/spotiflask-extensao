@@ -17,19 +17,33 @@ html {
     --fundo-input: #333333;
     --texto-primario: #ffffff;
     --texto-secundario: #aaaaaa;
+    --tamanho-titulo: 30px;
     --tamanho-subtitulo: 20px;
     --tamanho-texto: 14px;
     --tamanho-observacao: 12px;
     --raio-borda: 6px;
 }
 
+h1 {
+    font-size: var(--tamanho-titulo);
+    color: var(--texto-primario);
+}
+
+h2 {
+    font-size: var(--tamanho-subtitulo);
+    color: var(--texto-primario);
+}
+
 body {
     background-color: var(--fundo-primario);
+    font-size: var(--tamanho-texto);
     color: var(--texto-primario);
     user-select: var(--cor-primaria);
 }
 
 .feather {
+    width: var(--tamanho-texto);
+    height: var(--tamanho-texto);
     stroke-width: 3px;
 }
 
