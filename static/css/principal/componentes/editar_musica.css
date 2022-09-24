@@ -1,0 +1,83 @@
+.editar-backdrop {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 1;
+    background-color: #00000080;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.editar-card {
+    background-color: var(--fundo-secundario);
+    width: 400px;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    border-radius: var(--raio-borda);
+}
+
+.editar-head {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.editar-titulo {
+    font-size: 30px;
+    color: var(--texto-primario);
+}
+
+.editar-fechar {
+    cursor: pointer;
+    width: var(--tamanho-subtitulo);
+    height: var(--tamanho-subtitulo);
+    color: var(--texto-primario);
+    text-decoration: none;
+}
+
+.editar-observacao {
+    font-size: var(--tamanho-observacao);
+    color: var(--texto-secundario);
+    margin-bottom: 20px;
+}
+
+.editar-form {
+    width: 100%;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 10px;
+}
+
+.editar-campo {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.editar-campo:first-child {
+    grid-column: span 2;
+}
+
+.editar-form .botao-default {
+    margin-top: 20px;
+    grid-column: span 2;
+}
+
+.editar-cor-input {
+    max-width: 100%;
+    width: 100%;
+    background-color: var(--fundo-input);
+    border-radius: var(--raio-borda);
+}
+
+.html-duration-picker-input-controls-wrapper .controls button {
+    display: none;
+}

@@ -61,3 +61,12 @@ def excluir_musica(id_musica, id_playlist):
             a.musicas.remove(musica)
         db.session.delete(musica)
         db.session.commit()
+
+def editar_musica(id_musica, nome, genero, duracao):
+    musica: Musica = Musica.query.get(id_musica)
+    g: Genero = Genero.query.get(genero)
+    if g:
+        musica.nome = nome
+        musica.genero_id = genero
+        musica.duracao = duracao
+        db.session.commit()

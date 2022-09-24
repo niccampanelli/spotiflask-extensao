@@ -7,13 +7,7 @@ from ..extensions import db
 
 def detalhes_playlist(id_playlist):
     playlist = Playlist.query.get(id_playlist)
-    resultado = Playlist(id=playlist.id, nome=playlist.nome, album=playlist.album, musicas=playlist.musicas, proprietario_id=playlist.proprietario_id, proprietario=playlist.proprietario, bibliotecas=playlist.bibliotecas)
-    for m in resultado.musicas:
-        if m.duracao < 3600:
-            m.duracao = time.strftime('%M:%S', time.gmtime(m.duracao))
-        else:
-            m.duracao = time.strftime('%H:%M:%S', time.gmtime(m.duracao))
-    return resultado
+    return playlist
 
 def obter_playlists(incluir_albuns=False):
     if incluir_albuns:
@@ -30,7 +24,6 @@ def playlists_usuario(id_usuario):
 def editar_playlist(id_playlist, nome):
     playlist: Playlist = Playlist.query.get(id_playlist)
     playlist.nome = nome
-    db.session.add(playlist)
     db.session.commit()
 
 def excluir_playlist(id_playlist):

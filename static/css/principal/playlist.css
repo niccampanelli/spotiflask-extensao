@@ -215,7 +215,7 @@ main {
     padding-left: 20px;
 }
 
-.playlist-lista-corpo tr td:last-child {
+.playlist-lista-musica-duracao {
     padding-right: 20px;
     text-align: right;
 }

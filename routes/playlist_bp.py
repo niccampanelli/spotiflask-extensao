@@ -1,6 +1,6 @@
 from flask import Blueprint, session, request, render_template, redirect
 
-from ..services.musica_service import detalhes_musica, excluir_musica
+from ..services.musica_service import detalhes_musica, editar_musica, excluir_musica, obter_generos
 from ..services.playlist_service import detalhes_playlist, editar_playlist, excluir_playlist
 
 playlist_bp = Blueprint('playlist_bp', __name__, url_prefix='/playlist')
@@ -59,5 +59,26 @@ def deletar_musica(id_playlist, id_musica):
                     excluir_musica(id_musica=id_musica, id_playlist=id_playlist)
                     return redirect(f'/playlist/{id_playlist}')
                 return nome + ' = ' + id_musica
+        else:
+            return redirect('/') 
+
+@playlist_bp.route('/<id_playlist>/musica/<id_musica>/editar', methods=['GET', 'POST'])
+def editar_dado_musica(id_playlist, id_musica):
+    playlist = detalhes_playlist(id_playlist)
+    musica = detalhes_musica(id_musica)
+    generos = obter_generos()
+    if request.method == 'GET':
+        for a in musica.artistas:
+            if session['logado_id'] == a.id:
+                return render_template('/principal/playlist.html', p=playlist, musica=musica, generos=generos, editandoMusica=True)
+        return redirect(f'/playlist/{id_playlist}')
+    elif request.method == 'POST':
+        for a in musica.artistas:
+            if session['logado_id'] == a.id:
+                nome = request.form.get('nome', '')
+                genero = request.form.get('genero', '')
+                duracao = request.form.get('duracao', '')
+                editar_musica(id_musica=id_musica, nome=nome, genero=genero, duracao=duracao)
+                return redirect(f'/playlist/{id_playlist}')
         else:
             return redirect('/') 

@@ -5,6 +5,7 @@
     <link rel="stylesheet" href="/static/css/principal/playlist.css">
     <link rel="stylesheet" href="/static/css/principal/componentes/editar_playlist.css">
     <link rel="stylesheet" href="/static/css/principal/componentes/excluir_playlist.css">
+    <link rel="stylesheet" href="/static/css/principal/componentes/editar_musica.css">
 {% endblock estilospagina %}
 
 {% block titulo_pagina %}{{p.nome}} - Spotiflask{% endblock titulo_pagina %}
@@ -59,6 +60,7 @@
                         <ul class="playlist-lista-musica-opcoes-lista" id="playlist-lista-musica-opcoes-lista_{{loop.index}}">
                             {% if p.proprietario_id == session['logado_id'] %}
                                 <li><a href="/playlist/{{p.id}}/musica/{{m.id}}/excluir">{{ 'Excluir' if p.album == 1 else 'Remover' }}</a></li>
+                                <li><a href="/playlist/{{p.id}}/musica/{{m.id}}/editar">Editar informações</a></li>
                             {% endif %}
                         </ul>
                         <script>
@@ -72,7 +74,10 @@
                             });
                         </script>
                     </td>
-                    <td>{{m.duracao}}</td>
+                    <td class="playlist-lista-musica-duracao" id="playlist-lista-musica-duracao_{{loop.index}}"></td>
+                    <script>
+                        document.getElementById('playlist-lista-musica-duracao_{{loop.index}}').innerText = Math.floor(parseInt("{{m.duracao}}") / 60) + ":" + (parseInt("{{m.duracao}}") % 60 < 10 ? "0" : "") + parseInt("{{m.duracao}}") % 60;
+                    </script>
                 </tr>
             {% endfor %}
             </tbody>
@@ -87,9 +92,13 @@
     {% if excluindoMusica %}
         {% include "principal/componentes/excluir_musica.html" %}
     {% endif %}
+    {% if editandoMusica %}
+        {% include "principal/componentes/editar_musica.html" %}
+    {% endif %}
 </section>
 {% endblock conteudo %}
 
 {% block scripts_pagina %}
 <script src="/static/js/playlistDropdown.js"></script>
+<script src="/static/js/duracaoMusicaPlaylist.js"></script>
 {% endblock scripts_pagina %}
