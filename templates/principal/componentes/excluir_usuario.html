@@ -1,0 +1,17 @@
+<div id="excluir-usuario-modal" class="excluir-backdrop">
+    <aside class="excluir-card">
+        <div class="excluir-head">
+            <h3 class="excluir-titulo">Deseja mesmo deletar permanentemente seu cadastro?</h3>
+            <a href="/usuario/{{u.id}}" class="excluir-fechar"><i data-feather="x"></i></a>
+        </div>
+        <p class="excluir-observacao">Não será possível reverter a exclusão. {{'Todas as suas músicas serão apagadas permanentemente e removidas das playlists.' if u.tipo == 1 else ''}} Suas playlists também serão removidas.</p> 
+        <form action="/usuario/{{u.id}}/excluir" autocomplete="off" method="post" class="excluir-form">
+            <div class="excluir-campo">
+                <label for="nome">Digite o nome da conta para confirmar</label>
+                <input class="input-default" type="text" name="nome" autofocus required onfocus="this.select()" placeholder="Nome da conta" id="nome" />
+            </div>
+            <button class="botao-default" type="submit">Confirmar</button>
+        </form>
+    </aside>
+    <script src="/static/js/excluirUsuarioModal.js"></script>
+</div>

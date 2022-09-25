@@ -1,0 +1,21 @@
+<div id="editar-usuario-modal" class="editar-backdrop">
+    <aside class="editar-card">
+        <div class="editar-head">
+            <h3 class="editar-titulo">Configurar conta</h3>
+            <a href="/usuario/{{u.id}}" class="editar-fechar"><i data-feather="x"></i></a>
+        </div>
+        <p class="editar-observacao">Insira as novas informações da conta e clique em salvar para aplicar as mudanças. Os campos não podem ser omitidos.</p>
+        <form action="/usuario/{{u.id}}/editar" autocomplete="off" method="post" class="editar-form">
+            <div class="editar-campo">
+                <label for="nome">Nome</label>
+                <input class="input-default" type="text" name="nome" autofocus required value="{{u.nome}}" onfocus="this.select()" placeholder="Insira um novo nome" id="nome" />
+            </div>
+            <div class="editar-campo">
+                <label for="tipo">Conta de artista?</label>                
+                <input type="checkbox" name="tipo" id="tipo" {% if u.tipo == 1 %}checked{% endif %} />
+            </div>
+            <button class="botao-default" type="submit">Salvar</button>
+        </form>
+    </aside>
+    <script src="/static/js/editarUsuarioModal.js"></script>
+</div>

@@ -15,7 +15,10 @@
     <title>{{ titulo_pagina }}</title>
 </head>
 <body>
-    {% block principal %}
+    {% set titulo_tela %}
+        {% block titulo_tela %}{% endblock titulo_tela %}
+    {% endset %}
+    {% block principal scoped %}
     
     {% endblock principal %}
 

@@ -1,4 +1,7 @@
-from flask import Blueprint, render_template
+from urllib import request
+from flask import Blueprint, request, session, redirect, render_template
+
+from ..services.usuario_service import detalhes_usuario, editar_usuario, excluir_usuario
 from ..extensions import db
 from ..services.playlist_service import albuns_artistas, playlists_usuario
 from ..models.biblioteca import Biblioteca
@@ -38,3 +41,36 @@ def listar_playlists(id: int):
 def listar_albuns(id: int):
     playlists = albuns_artistas(id)
     return playlists
+
+@usuario_bp.route('/<id>/editar', methods=['GET', 'POST'])
+def editar_dado_usuario(id):
+    usuario = detalhes_usuario(id)
+    if request.method == 'GET':
+        if session['logado_id'] == usuario.id:
+            return render_template('/principal/usuario.html', u=usuario, editando=True)
+        return redirect(f'/usuario/{id}')
+    elif request.method == 'POST':
+        if session['logado_id'] == usuario.id:
+            nome = request.form.get('nome', '')
+            tipo = 1 if request.form.get('tipo', 0) == 'on' else 0
+            editar_usuario(id, nome, tipo)
+            return redirect(f'/usuario/{id}')
+        else:
+            return redirect('/') 
+
+@usuario_bp.route('/<id>/excluir', methods=['GET', 'POST'])
+def deletar_usuario(id):
+    usuario = detalhes_usuario(id)
+    if request.method == 'GET':
+        if session['logado_id'] == usuario.id:
+            return render_template('/principal/usuario.html', u=usuario, excluindo=True)
+        return redirect(f'/usuario/{id}')
+    elif request.method == 'POST':
+        if session['logado_id'] == usuario.id:
+            nome = request.form.get('nome', '')
+            if nome == usuario.nome:
+                excluir_usuario(id)
+                return redirect('/')
+            return redirect(f'/usuario/{id}/excluir')
+        else:
+            return redirect('/') 

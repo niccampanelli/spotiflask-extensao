@@ -7,10 +7,10 @@ class Playlist(db.Model):
     id = db.Column(db.Integer, primary_key = True)
     nome = db.Column(db.String(50))
     album = db.Column(db.Integer)
-    musicas = db.relationship("Musica", secondary=relations.playlist_musicas)
+    musicas = db.relationship("Musica", secondary=relations.playlist_musicas, back_populates="playlists")
     proprietario_id = db.Column(db.Integer, db.ForeignKey("usuario.id"))
     proprietario = db.relationship("Usuario")
-    bibliotecas = db.relationship("Biblioteca", secondary=relations.biblioteca_playlists)
+    bibliotecas = db.relationship("Biblioteca", secondary=relations.biblioteca_playlists, back_populates="playlists")
 
     def __repr__(self):
         return '<Playlist %r>' % self.nome

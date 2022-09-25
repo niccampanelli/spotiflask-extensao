@@ -9,6 +9,13 @@
 {% endblock estilospagina %}
 
 {% block titulo_pagina %}{{p.nome}} - Spotiflask{% endblock titulo_pagina %}
+{% block titulo_tela %}
+{% if p.album == 0 %}
+Playlist
+{% else %}
+Álbum
+{% endif %}
+{% endblock titulo_tela %}
 
 {% block conteudo %}
 <section class="playlist-conteudo">
@@ -27,7 +34,7 @@
                 {% else %}
                     <h2 class="playlist-infos-nome">{{p.nome}}</h2>
                 {% endif %}
-                <p><a class="playlist-infos-artista" href="/usuario/{{p.proprietario_id}}"><i data-feather="user"></i> {{p.proprietario.nome}}</a> | {{p.musicas|length}} {{'música' if p.musicas|length == 1 else 'músicas'}}</p>
+                <p><a class="playlist-infos-artista" href="/usuario/{{p.proprietario_id}}"><i data-feather="user"></i> {{p.proprietario.nome}}</a> • {{p.musicas|length}} {{'música' if p.musicas|length == 1 else 'músicas'}}</p>
             </div>
             <div class="playlist-opcoes">
                 {% if p.proprietario_id == session['logado_id'] %}
@@ -52,7 +59,14 @@
             {% for m in p.musicas %}
                 <tr>
                     <td>{{loop.index}}</td>
-                    <td>{{m.nome}}</td>
+                    <td>
+                        <a id="playlist-lista-musica-titulo">{{m.nome}}</a>
+                        <p>
+                            {% for a in m.artistas %}
+                                <a href="/usuario/{{a.id}}" class="playlist-lista-musica-artista">{{a.nome}}</a>{% if not loop.last %}, {% endif %}
+                            {% endfor %}
+                        </p>
+                    </td>
                     <td class="playlist-lista-musica-opcoes">
                         <button id="playlist-lista-musica-opcoes_{{loop.index}}">
                             <i data-feather="more-vertical"></i>
@@ -76,7 +90,7 @@
                     </td>
                     <td class="playlist-lista-musica-duracao" id="playlist-lista-musica-duracao_{{loop.index}}"></td>
                     <script>
-                        document.getElementById('playlist-lista-musica-duracao_{{loop.index}}').innerText = Math.floor(parseInt("{{m.duracao}}") / 60) + ":" + (parseInt("{{m.duracao}}") % 60 < 10 ? "0" : "") + parseInt("{{m.duracao}}") % 60;
+                        document.getElementById('playlist-lista-musica-duracao_{{loop.index}}').innerText = new Date(parseInt("{{m.duracao}}") * 1000).toISOString().substr(11, 8).replace(/^0(?:0:0?)?/, '');
                     </script>
                 </tr>
             {% endfor %}
@@ -100,5 +114,4 @@
 
 {% block scripts_pagina %}
 <script src="/static/js/playlistDropdown.js"></script>
-<script src="/static/js/duracaoMusicaPlaylist.js"></script>
 {% endblock scripts_pagina %}

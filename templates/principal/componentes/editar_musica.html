@@ -21,10 +21,10 @@
             </div>
             <div class="editar-campo">
                 <label for="nome">Duração</label>
-                <input class="input-escondido" type="hidden" name="duracao" id="duracaoEmSegundos" />
+                <input class="input-escondido" type="hidden" value="{{musica.duracao}}" name="duracao" id="duracaoEmSegundos" />
                 <input class="html-duration-picker input-default" required type="text" id="duracao" />
                 <script>
-                        document.getElementById('duracao').setAttribute("value", "00:" + (Math.floor(parseInt("{{musica.duracao}}") / 60) < 10 ? "0" : "") + Math.floor(parseInt("{{musica.duracao}}") / 60) + ":" + (parseInt("{{musica.duracao}}") % 60 < 10 ? "0" : "") + parseInt("{{musica.duracao}}") % 60);
+                        document.getElementById('duracao').setAttribute("value", new Date(parseInt("{{musica.duracao}}") * 1000).toISOString().substr(11, 8));
                 </script>
             </div>
             <button class="botao-default" type="submit">Salvar</button>

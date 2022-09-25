@@ -3,22 +3,39 @@
 {% block estilospagina %}
     {{ super() }}
     <link rel="stylesheet" href="/static/css/principal/usuario.css">
+    <link rel="stylesheet" href="/static/css/principal/componentes/editar_usuario.css">
+    <link rel="stylesheet" href="/static/css/principal/componentes/excluir_usuario.css">
 {% endblock estilospagina %}
 
 {% block titulo_pagina %}{{u.nome}} - Spotiflask{% endblock titulo_pagina %}
+{% block titulo_tela %}Conta{% endblock titulo_tela %}
 
 {% block conteudo %}
 <section class="usuario-conteudo">
     <section class="usuario-principal">
-        <i data-feather="user"></i>
+        <i class="usuario-icone" data-feather="user"></i>
         <div class="usuario-infos">
             {% if u.tipo == 0 %}
                 <p>Usuário</p>
             {% else %}
                 <p>Artista</p>
             {% endif %}
-            <h2 class="usuario-infos-nome">{{u.nome}}</h2>
+            {% if u.id == session['logado_id'] %}
+                <a class="usuario-acao" href="/usuario/{{u.id}}/editar">
+                    <h2 class="usuario-infos-nome">{{u.nome}}</h2>
+                </a>
+            {% else %}
+                <h2 class="usuario-infos-nome">{{u.nome}}</h2>
+            {% endif %}
             <p>{{u.email}}</p>
+        </div>
+        <div class="usuario-opcoes">
+            {% if u.id == session['logado_id'] %}
+                <button class="usuario-opcoes-botao" id="usuario-opcoes"><i data-feather="more-vertical"></i></button>
+                <ul class="usuario-opcoes-lista" id="usuario-opcoes-lista">
+                    <li><a href="/usuario/{{u.id}}/excluir">Excluir</a></li>
+                </ul>
+            {% endif %}
         </div>
     </section>
     <section>
@@ -26,14 +43,19 @@
         {% if u.tipo == 1 %}
             {% if albuns %}
             <h3>Albuns</h3>
-            <ul class="usuario-playlists">
-            {% for a in albuns %}
-                <li>
-                    <a href="/playlist/{{a.id}}">
-                        <p>{{a.nome}}</p>
-                    </a>
-                </li>
-            {% endfor %}
+            <div class="usuario-playlists">
+                <ul class="usuario-playlists-lista">
+                {% for a in albuns %}
+                    <li class="usuario-playlists-item">
+                        <a href="/playlist/{{a.id}}" class="card-default">
+                            <i class="card-default-icone" data-feather="music"></i>
+                            <h3>{{a.nome}}</h3>
+                            <p>{{a.proprietario.nome}}</p>
+                        </a>
+                    </li>
+                {% endfor %}
+                </ul>
+            </div>
             </ul>
             {% endif %}
         {% endif %}
@@ -50,8 +72,15 @@
         </ul>
         {% endif %}
     </section>
+    {% if editando %}
+        {% include "principal/componentes/editar_usuario.html" %}
+    {% endif %}
+    {% if excluindo %}
+        {% include "principal/componentes/excluir_usuario.html" %}
+    {% endif %}
 </section>
 {% endblock conteudo %}
 
 {% block scripts_pagina %}
+<script src="/static/js/usuarioDropdown.js"></script>
 {% endblock scripts_pagina %}

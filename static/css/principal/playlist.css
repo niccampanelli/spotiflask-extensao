@@ -132,6 +132,14 @@ main {
     border-collapse: collapse;
 }
 
+.playlist-lista td {
+    padding: 10px;
+}
+
+.playlist-lista th {
+    padding: 10px;
+}
+
 .playlist-lista-header {
     text-align: left;
     border-bottom: 1px solid var(--texto-secundario);
@@ -139,21 +147,28 @@ main {
 }
 
 .playlist-lista-header tr th:first-child {
-    padding-left: 20px;
-}
-
-.playlist-lista-header tr th:last-child {
-    width: 100px;
-    padding-right: 20px;
+    width: 60px;
     text-align: right;
 }
 
-.playlist-lista-corpo tr {
-    height: 40px;
+.playlist-lista-header tr :nth-last-child(2) {
+    width: 50px;
+    text-align: right;
+}
+
+.playlist-lista-header tr th:last-child {
+    width: 80px;
+    text-align: right;
 }
 
 .playlist-lista-corpo tr:hover {
     background-color: #ffffff0f;
+}
+
+.playlist-lista-musica-artista {
+    font-size: var(--tamanho-texto);
+    color: var(--texto-secundario);
+    text-decoration: none;
 }
 
 .playlist-lista-musica-opcoes {
@@ -189,7 +204,7 @@ main {
     top: calc(100% + 10px);
     right: 0;
     z-index: 1;
-    width: fit-content;
+    width: max-content;
     display: none;
     flex-direction: column;
     align-items: flex-start;
@@ -212,10 +227,10 @@ main {
 }
 
 .playlist-lista-corpo tr td:first-child {
-    padding-left: 20px;
+    text-align: right;
+    color: var(--texto-secundario);
 }
 
 .playlist-lista-musica-duracao {
-    padding-right: 20px;
     text-align: right;
 }
