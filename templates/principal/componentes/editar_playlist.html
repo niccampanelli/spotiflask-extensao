@@ -8,7 +8,7 @@
         <form action="/playlist/{{p.id}}/editar" autocomplete="off" method="post" class="editar-playlist-form">
             <div class="editar-playlist-campo">
                 <label for="cor">Cor {{ 'do álbum' if p.album == 1 else 'da playlist' }}</label>
-                <input class="editar-playlist-cor-input" type="color" name="cor" required id="cor" />
+                <input class="editar-playlist-cor-input" type="color" name="cor" value="{{p.cor}}" required id="cor" />
             </div>
             <div class="editar-playlist-campo">
                 <label for="nome">Nome {{ 'do álbum' if p.album == 1 else 'da playlist' }}</label>

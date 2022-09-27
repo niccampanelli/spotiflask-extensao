@@ -6,7 +6,7 @@ from ..models.playlist import Playlist
 from ..extensions import db
 
 def adicionar_playlist(nome, usuario_id):
-    playlist = Playlist(nome=nome, album=0, proprietario_id=usuario_id)
+    playlist = Playlist(nome=nome, album=0, proprietario_id=usuario_id, cor="#00cf56")
     biblioteca = Biblioteca.query.filter(Biblioteca.usuario_id == usuario_id).first()
     biblioteca.playlists.append(playlist)
     db.session.add(playlist)
@@ -36,8 +36,9 @@ def playlists_usuario(id_usuario):
     resultado = [tuple(p) for p in playlists]
     return resultado
 
-def editar_playlist(id_playlist, nome):
+def editar_playlist(id_playlist, cor, nome):
     playlist: Playlist = Playlist.query.get(id_playlist)
+    playlist.cor = cor
     playlist.nome = nome
     db.session.commit()
 

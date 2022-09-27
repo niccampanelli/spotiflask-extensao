@@ -29,8 +29,9 @@ def editar_dado_playlist(id):
         return redirect(f'/playlist/{id}')
     elif request.method == 'POST':
         if session['logado_id'] == playlist.proprietario_id:
+            cor = request.form.get('cor', '')
             nome = request.form.get('nome', '')
-            editar_playlist(id, nome)
+            editar_playlist(id, cor, nome)
             return redirect(f'/playlist/{id}')
         else:
             return redirect('/') 

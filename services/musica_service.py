@@ -30,7 +30,7 @@ def obter_generos():
     return generos
 
 def adicionar_album(nome, artista):
-    album = Playlist(nome=nome, album=1, proprietario_id=artista)
+    album = Playlist(nome=nome, album=1, proprietario_id=artista, cor="#00cf56")
     biblioteca = Biblioteca.query.filter(Biblioteca.usuario_id == artista).first()
     biblioteca.playlists.append(album)
     db.session.add(album)

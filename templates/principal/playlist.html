@@ -21,7 +21,7 @@ Playlist
 {% block conteudo %}
 <section class="playlist-conteudo">
         <section class="playlist-principal">
-            <i class="playlist-icone" data-feather="music"></i>
+            <i class="playlist-icone" style="background-color: {{p.cor}};" data-feather="music"></i>
             <div class="playlist-infos">
                 {% if p.album == 0 %}
                     <p>Playlist</p>

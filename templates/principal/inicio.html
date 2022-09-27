@@ -17,7 +17,7 @@
         {% for p in playlists_recentes %}
             <li class="inicio-playlists-item">
                 <a href="/playlist/{{p.id}}" class="card-default">
-                    <i class="card-default-icone" onclick="definirCorAleatoria(this)" data-feather="music"></i>
+                    <i class="card-default-icone" style="background-color: {{p.cor}};" data-feather="music"></i>
                     <h3>{{p.nome}}</h3>
                     <p>{{p.proprietario.nome}}</p>
                 </a>
@@ -35,5 +35,4 @@
 {% endblock conteudo %}
 
 {% block scripts_pagina %}
-<script src="/static/js/corAleatoria.js"></script>
 {% endblock scripts_pagina %}

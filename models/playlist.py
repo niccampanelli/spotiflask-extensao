@@ -7,6 +7,7 @@ class Playlist(db.Model):
     id = db.Column(db.Integer, primary_key = True)
     nome = db.Column(db.String(50))
     album = db.Column(db.Integer)
+    cor = db.Column(db.String(7))
     musicas = db.relationship("Musica", secondary=relations.playlist_musicas, back_populates="playlists")
     proprietario_id = db.Column(db.Integer, db.ForeignKey("usuario.id"))
     proprietario = db.relationship("Usuario")
