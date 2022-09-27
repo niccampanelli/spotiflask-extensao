@@ -1,4 +1,4 @@
-.editar-backdrop {
+.editar-playlist-backdrop {
     position: fixed;
     top: 0;
     right: 0;
@@ -11,7 +11,7 @@
     align-items: center;
 }
 
-.editar-card {
+.editar-playlist-card {
     background-color: var(--fundo-secundario);
     width: 400px;
     height: fit-content;
@@ -21,7 +21,7 @@
     border-radius: var(--raio-borda);
 }
 
-.editar-head {
+.editar-playlist-head {
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -30,12 +30,12 @@
     margin-bottom: 20px;
 }
 
-.editar-titulo {
+.editar-playlist-titulo {
     font-size: 30px;
     color: var(--texto-primario);
 }
 
-.editar-fechar {
+.editar-playlist-fechar {
     cursor: pointer;
     width: var(--tamanho-subtitulo);
     height: var(--tamanho-subtitulo);
@@ -43,31 +43,31 @@
     text-decoration: none;
 }
 
-.editar-observacao {
+.editar-playlist-observacao {
     font-size: var(--tamanho-observacao);
     color: var(--texto-secundario);
     margin-bottom: 20px;
 }
 
-.editar-form {
+.editar-playlist-form {
     width: 100%;
     display: flex;
     flex-direction: column;
     gap: 10px;
 }
 
-.editar-campo {
+.editar-playlist-campo {
     display: flex;
     flex-direction: column;
     gap: 10px;
 }
 
-.editar-form .botao-default {
+.editar-playlist-form .botao-default {
     margin-top: 20px;
     grid-column: span 2;
 }
 
-.editar-cor-input {
+.editar-playlist-cor-input {
     max-width: 100%;
     width: 100%;
     background-color: var(--fundo-input);

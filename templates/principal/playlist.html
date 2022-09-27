@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="/static/css/principal/componentes/editar_playlist.css">
     <link rel="stylesheet" href="/static/css/principal/componentes/excluir_playlist.css">
     <link rel="stylesheet" href="/static/css/principal/componentes/editar_musica.css">
+    <link rel="stylesheet" href="/static/css/principal/componentes/excluir_musica.css">
 {% endblock estilospagina %}
 
 {% block titulo_pagina %}{{p.nome}} - Spotiflask{% endblock titulo_pagina %}
@@ -76,6 +77,14 @@ Playlist
                                 <li><a href="/playlist/{{p.id}}/musica/{{m.id}}/excluir">{{ 'Excluir' if p.album == 1 else 'Remover' }}</a></li>
                                 <li><a href="/playlist/{{p.id}}/musica/{{m.id}}/editar">Editar informações</a></li>
                             {% endif %}
+                                <li class="playlist-lista-musica-adicionar-playlist"><p>Adicionar à playlist</p></li>
+                                <ul class="playlist-lista-musica-adicionar-playlist-lista">
+                                    {% for playlist in lista_playlist %}
+                                        {% if playlist.id != p.id %}
+                                            <li><a href="/playlist/{{playlist.id}}/musica/{{m.id}}/adicionar">{{playlist.nome}}</a></li>
+                                        {% endif %}
+                                    {% endfor %}
+                                </ul>
                         </ul>
                         <script>
                             document.getElementById('playlist-lista-musica-opcoes_{{loop.index}}').addEventListener('click', () => {

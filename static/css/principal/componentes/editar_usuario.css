@@ -1,4 +1,4 @@
-.editar-backdrop {
+.editar-usuario-backdrop {
     position: fixed;
     top: 0;
     right: 0;
@@ -11,7 +11,7 @@
     align-items: center;
 }
 
-.editar-card {
+.editar-usuario-card {
     background-color: var(--fundo-secundario);
     width: 400px;
     height: fit-content;
@@ -21,7 +21,7 @@
     border-radius: var(--raio-borda);
 }
 
-.editar-head {
+.editar-usuario-head {
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -30,12 +30,12 @@
     margin-bottom: 20px;
 }
 
-.editar-titulo {
+.editar-usuario-titulo {
     font-size: 30px;
     color: var(--texto-primario);
 }
 
-.editar-fechar {
+.editar-usuario-fechar {
     cursor: pointer;
     width: var(--tamanho-subtitulo);
     height: var(--tamanho-subtitulo);
@@ -43,26 +43,26 @@
     text-decoration: none;
 }
 
-.editar-observacao {
+.editar-usuario-observacao {
     font-size: var(--tamanho-observacao);
     color: var(--texto-secundario);
     margin-bottom: 20px;
 }
 
-.editar-form {
+.editar-usuario-form {
     width: 100%;
     display: flex;
     flex-direction: column;
     gap: 10px;
 }
 
-.editar-campo {
+.editar-usuario-campo {
     display: flex;
     flex-direction: column;
     gap: 10px;
 }
 
-.editar-form .botao-default {
+.editar-usuario-form .botao-default {
     margin-top: 20px;
     grid-column: span 2;
 }

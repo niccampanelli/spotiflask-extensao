@@ -1,12 +1,12 @@
-<div id="excluir-musica-modal" class="excluir-backdrop">
-    <aside class="excluir-card">
-        <div class="excluir-head">
-            <h3 class="excluir-titulo">Deseja mesmo {{ 'excluir' if p.album == 1 else 'remover' }} essa música?</h3>
-            <a href="/playlist/{{p.id}}" class="excluir-fechar"><i data-feather="x"></i></a>
+<div id="excluir-musica-modal" class="excluir-musica-backdrop">
+    <aside class="excluir-musica-card">
+        <div class="excluir-musica-head">
+            <h3 class="excluir-musica-titulo">Deseja mesmo {{ 'excluir' if p.album == 1 else 'remover' }} essa música?</h3>
+            <a href="/playlist/{{p.id}}" class="excluir-musica-fechar"><i data-feather="x"></i></a>
         </div>
-        <p class="excluir-observacao">{{ 'Não será possível reverter a exclusão dessa música. Essa música será excluída de todas as playlists em que se encontra.' if p.album == 1 else 'A música ainda permanecerá cadastrada no álbum a qual pertence.' }}</p>
-        <form action="/playlist/{{p.id}}/musica/{{musica.id}}/excluir" autocomplete="off" method="post" class="excluir-form">
-            <div class="excluir-campo">
+        <p class="excluir-musica-observacao">{{ 'Não será possível reverter a exclusão dessa música. Essa música será excluída de todas as playlists em que se encontra.' if p.album == 1 else 'A música ainda permanecerá cadastrada no álbum a qual pertence.' }}</p>
+        <form action="/playlist/{{p.id}}/musica/{{musica.id}}/excluir" autocomplete="off" method="post" class="excluir-musica-form">
+            <div class="excluir-musica-campo">
                 <label for="nome">Digite o nome da música para confirmar</label>
                 <input class="input-default" type="text" name="nome" autofocus required onfocus="this.select()" placeholder="Nome da música" id="nome" />
             </div>

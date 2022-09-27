@@ -61,15 +61,19 @@
         {% endif %}
         {% if playlists != 0 %}
         <h3>Playlists</h3>
-        <ul class="usuario-playlists">
-        {% for p in playlists %}
-            <li>
-                <a href="/playlist/{{p.id}}">
-                    <p>{{p.nome}}</p>
-                </a>
-            </li>
-        {% endfor %}
-        </ul>
+        <div class="usuario-playlists">
+            <ul class="usuario-playlists-lista">
+            {% for p in playlists %}
+                <li class="usuario-playlists-item">
+                    <a href="/playlist/{{p.id}}" class="card-default">
+                        <i class="card-default-icone" data-feather="music"></i>
+                        <h3>{{p.nome}}</h3>
+                        <p>{{p.proprietario.nome}}</p>
+                    </a>
+                </li>
+            {% endfor %}
+            </ul>
+        </div>
         {% endif %}
     </section>
     {% if editando %}

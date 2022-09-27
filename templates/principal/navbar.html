@@ -5,14 +5,18 @@
         <li><i data-feather="home"></i><a href="/">Início</a></li>
         <li><i data-feather="search"></i><a href="/">Buscar</a></li>
         {% if session['logado'] %}
-            <li><i data-feather="layers"></i><a href="/">Biblioteca</a></li>
+            <li><i data-feather="layers"></i><a href="/usuario/{{session['logado_id']}}">Biblioteca</a></li>
+        {% endif %}
+        {% if session['logado'] %}
+            <a href="/adicionar_musica" class="botao-default">
+                Adicionar música
+                <i data-feather="plus"></i>
+            </a>
+            <a href="/playlist/criar" class="botao-secundario">
+                Criar playlist
+                <i data-feather="plus"></i>
+            </a>
         {% endif %}
     </ul>
-    {% if session['logado'] %}
-        <a href="/adicionar_musica" class="botao-default">
-            Adicionar música
-            <i data-feather="plus"></i>
-        </a>
-    {% endif %}
 </nav>
 {% endblock navbar %}

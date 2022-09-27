@@ -1,16 +1,16 @@
-<div id="editar-musica-modal" class="editar-backdrop">
-    <aside class="editar-card">
-        <div class="editar-head">
-            <h3 class="editar-titulo">Editar música</h3>
-            <a href="/playlist/{{p.id}}" class="editar-fechar"><i data-feather="x"></i></a>
+<div id="editar-musica-modal" class="editar-musica-backdrop">
+    <aside class="editar-musica-card">
+        <div class="editar-musica-head">
+            <h3 class="editar-musica-titulo">Editar música</h3>
+            <a href="/playlist/{{p.id}}" class="editar-musica-fechar"><i data-feather="x"></i></a>
         </div>
-        <p class="editar-observacao">Insira as novas informações da música e clique em salvar para aplicar as mudanças. Os campos não podem ser omitidos.</p>
-        <form action="/playlist/{{p.id}}/musica/{{musica.id}}/editar" autocomplete="off" method="post" class="editar-form">
-            <div class="editar-campo">
+        <p class="editar-musica-observacao">Insira as novas informações da música e clique em salvar para aplicar as mudanças. Os campos não podem ser omitidos.</p>
+        <form action="/playlist/{{p.id}}/musica/{{musica.id}}/editar" autocomplete="off" method="post" class="editar-musica-form">
+            <div class="editar-musica-campo">
                 <label for="nome">Nome da música</label>
                 <input class="input-default" type="text" name="nome" autofocus required value="{{musica.nome}}" onfocus="this.select()" placeholder="Insira um novo nome" id="nome" />
             </div>
-            <div class="editar-campo">
+            <div class="editar-musica-campo">
                 <label for="genero">Gênero</label>
                 <input class="input-default" list="generos" required name="genero" value="{{musica.genero.id}}" onfocus="this.select()" placeholder="Indique o novo gênero" id="genero">
                 <datalist id="generos">
@@ -19,7 +19,7 @@
                     {% endfor %}
                 </datalist>
             </div>
-            <div class="editar-campo">
+            <div class="editar-musica-campo">
                 <label for="nome">Duração</label>
                 <input class="input-escondido" type="hidden" value="{{musica.duracao}}" name="duracao" id="duracaoEmSegundos" />
                 <input class="html-duration-picker input-default" required type="text" id="duracao" />
@@ -32,5 +32,5 @@
     </aside>
     <script src="/static/js/converterDuracao.js"></script>
     <script src="/static/js/html-duration-input.min.js"></script>
-    <script src="/static/js/editar_playlist_modal.js"></script>
+    <script src="/static/js/editarMusicaModal.js"></script>
 </div>
