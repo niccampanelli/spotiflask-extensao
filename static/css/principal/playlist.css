@@ -20,12 +20,14 @@ main {
     width: 100%;
     min-height: 100%;
     height: fit-content;
-    background-image: linear-gradient(0deg, var(--fundo-secundario) 60%, #5d8ec5 120%);
+    background-color: #000000;
+    background-image: linear-gradient(0deg, var(--fundo-secundario) 60%, #00000000 120%);
     display: flex;
     gap: 20px;
     flex: 1;
     flex-direction: column;
     padding: 100px 40px 40px 40px;
+    transition: background-color 1s;
 }
 
 .playlist-acao {

@@ -19,9 +19,9 @@ Playlist
 {% endblock titulo_tela %}
 
 {% block conteudo %}
-<section class="playlist-conteudo">
+<section class="playlist-conteudo aplicaCorDinamica">
         <section class="playlist-principal">
-            <i class="playlist-icone" style="background-color: {{p.cor}};" data-feather="music"></i>
+            <i class="playlist-icone provedorDeCor" style="background-color: {{p.cor}};" data-feather="music"></i>
             <div class="playlist-infos">
                 {% if p.album == 0 %}
                     <p>Playlist</p>
@@ -123,4 +123,5 @@ Playlist
 
 {% block scripts_pagina %}
 <script src="/static/js/playlistDropdown.js"></script>
+<script async src="/static/js/detectarCor.js"></script>
 {% endblock scripts_pagina %}

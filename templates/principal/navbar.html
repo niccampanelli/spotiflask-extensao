@@ -1,9 +1,10 @@
 {% block navbar %}
 <nav class="navbar-container">
-    <h1 class="navbar-titulo">Spotiflask</h1>
+    <a href="">
+        <h1 class="navbar-titulo">Spotiflask</h1>
+    </a>
     <ul class="navbar-lista">
         <li><i data-feather="home"></i><a href="/">Início</a></li>
-        <li><i data-feather="search"></i><a href="/">Buscar</a></li>
         {% if session['logado'] %}
             <li><i data-feather="layers"></i><a href="/usuario/{{session['logado_id']}}">Biblioteca</a></li>
         {% endif %}

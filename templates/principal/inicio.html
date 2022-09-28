@@ -9,7 +9,7 @@
 {% block titulo_tela %}Início{% endblock titulo_tela %}
 
 {% block conteudo %}
-<section class="inicio-conteudo">
+<section class="inicio-conteudo aplicaCorDinamica">
     <h2 class="inicio-saudacao">{{'Olá, '+session['logado_nome']+'!' if session['logado'] else 'Bem-vindo!'}}</h2>
     <h2 class="inicio-topico">Adicionadas recentemente</h2>
     <div class="inicio-playlists">
@@ -17,7 +17,7 @@
         {% for p in playlists_recentes %}
             <li class="inicio-playlists-item">
                 <a href="/playlist/{{p.id}}" class="card-default">
-                    <i class="card-default-icone" style="background-color: {{p.cor}};" data-feather="music"></i>
+                    <i class="card-default-icone provedorDeCor" style="background-color: {{p.cor}};" data-feather="music"></i>
                     <h3>{{p.nome}}</h3>
                     <p>{{p.proprietario.nome}}</p>
                 </a>
@@ -35,4 +35,5 @@
 {% endblock conteudo %}
 
 {% block scripts_pagina %}
+<script src="/static/js/detectarCor.js"></script>
 {% endblock scripts_pagina %}
