@@ -1,4 +1,4 @@
-# Spotiflask
+# ![Início da aplicação](static/img/logo.svg)
 Clone do Spotify feito com Flask para o curso de extensão do ecossistema Ânima.
 
 ## Introdução
